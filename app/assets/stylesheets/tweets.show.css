@@ -1,0 +1,14 @@
+/* ▼ Tweet 詳細ページ用 */
+.tweet-show-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.show-image {
+  width: 100%;
+  max-width: 300px; /* 好きに変えてOK */
+  border-radius: 12px;
+  object-fit: cover;
+}

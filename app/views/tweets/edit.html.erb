@@ -1,0 +1,5 @@
+<%= form_for [@group, @tweet] do |f| %>
+  <%= f.label :キャプション %>
+  <%= f.text_field :body, :size => 140 %> 
+  <%= f.submit "編集する" %>
+<% end %>

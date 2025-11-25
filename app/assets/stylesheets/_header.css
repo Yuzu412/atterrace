@@ -1,0 +1,65 @@
+/* ▼ ドロップダウン全体 */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* ▼ summary部分（クリックする部分） */
+.dropdown summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 10px 16px;
+  font-weight: 500;
+  font-size: 15px;
+  color: #333;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown summary:hover {
+  background-color: #f0f0f0;
+}
+
+/* ▼ summaryのデフォルトの三角マークを非表示 */
+.dropdown summary::-webkit-details-marker {
+  display: none;
+}
+
+/* ▼ ドロップダウンの中身 */
+.dropdown-content {
+  position: absolute;
+  top: 100%; /* summaryの下に配置 */
+  left: 0;
+  background-color: #fff;
+  min-width: 200px;
+  margin-top: 8px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  padding: 12px 0;
+  z-index: 100;
+  opacity: 0;
+  transform: translateY(-5px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* ▼ detailsが開いたときに見せる */
+.dropdown[open] .dropdown-content,
+details[open] > .dropdown-content {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* ▼ 中身のリスト要素を想定（部分テンプレートがul/liなら） */
+.dropdown-content li {
+  padding: 10px 16px;
+  color: #333;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-content li:hover {
+  background-color: #f9f9f9;
+}

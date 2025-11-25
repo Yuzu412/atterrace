@@ -1,0 +1,19 @@
+<header>
+      <h1><%= link_to "@Terrace", hello_index_path %></h1>
+</header>
+
+<div class="group-new-container">
+  <div class="group-new">
+    <h1>新規グループを作成</h1>
+  </div>
+  <%= form_with(model: @group, local: true) do |f| %>
+    <div class="group-new-form">
+      <div class="gtoup-new-form-name">
+        <%= f.label :name, 'グループ名' %>
+        <%= f.text_field :name, class: 'form-control' %>
+        <%= f.collection_check_boxes :user_ids, User.all, :id, :name %>
+      </div>
+      <%= f.submit '新規作成', class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

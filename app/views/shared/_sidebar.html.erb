@@ -1,0 +1,33 @@
+<!-- app/views/shared/_sidebar.html.erb -->
+<div class="sidebar">
+  <ul>
+    <li>
+      <div class="dropdown">
+        <details>
+          <summary>メンバー一覧</summary>
+          <div class="dropdown-content">
+            <% if defined?(@members) && @members.present? %>
+              <%= render partial: "groups/member_list", locals: { members: @members } %>
+            <% end %>
+        </details>
+      </div>
+    </li>
+    <li><%= link_to "コレミテ", group_path(@group) if @group&.persisted? %></li>
+    <li><%= link_to "アノコロ", group_blogs_path(@group) if @group&.persisted? %></li>
+    <li>
+      <div class="dropdown">
+        <details>
+          <summary>写真を追加</summary>
+          <div class="dropdown-content">
+            <ul>
+              <% if @group&.persisted? %>
+                <li><%= link_to "コレミテに写真を追加", new_group_tweet_path(@group), class: "add-photo-button" %></li>
+                <li><%= link_to 'アノコロに写真を追加', new_group_blog_path(@group), class: "add-photo-button" %></li>
+              <% end %>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </li>
+  </ul>
+</div>

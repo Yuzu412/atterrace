@@ -1,0 +1,26 @@
+<div class="group-list">
+<% if @group_joining.blank? %>
+  <p><%= @group_lists_none %></p>
+<% else %>
+  <div class="group-list">
+    <ul class="group-list-table">
+      <% @group_lists.each do |list| %>
+        <% if list.user_ids.include?(current_user.id) %>
+          <li class="group-list-table-each-group">
+            <%= link_to group_path(list) do %>
+              <%= list.name %> (<%= list.user_ids.count %>)
+            <% end %>
+            <%= link_to '編集', edit_group_path(list.id), method: :get %>
+            <%= link_to '削除', "/groups/#{list.id}", method: :delete %>
+            <%= link_to '招待', invitation_link_group_path(list), method: :get, class: "btn btn-info btn-sm" %>　#ここ追加
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+</div>
+
+<div class="group-new">
+  <%= link_to 'グループ作成', new_group_path, class: "group-new-link" %>
+</div>

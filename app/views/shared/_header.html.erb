@@ -1,0 +1,29 @@
+<header class="main-header">
+    <h1><%= link_to "@Terrace", hello_index_path %></h1>
+    <div class="header-list">
+        <ul>
+            <% if user_signed_in? %>
+                <li>
+                    <div class="dropdown">
+                        <details>
+                            <summary>マイページ </summary>
+                            <div class="dropdown-content">
+                            <%= render 'users/profile', user: current_user %>
+                            </div>
+                        </details>
+                    </div>
+                </li>
+                <li>
+                    <div class="dropdown">
+                        <details>
+                            <summary>グループ一覧 </summary>
+                            <div class="dropdown-content">
+                            <%= render 'groups/group_list', user: current_user %>
+                            </div>
+                        </details>
+                    </div>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+</header>

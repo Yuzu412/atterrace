@@ -1,0 +1,9 @@
+<%# グループのヘッダー部分 (グループ写真、グループ名、写真追加ボタン) %>
+  <div class="group-details">
+      <h2><%= @group.name %></h2>
+      <% if @group&.persisted? %>
+        <%= link_to "コレミテに写真を追加", new_group_tweet_path(@group) %>
+        <%= link_to "グループの情報を編集", edit_group_path(@group)%>
+      <% end %>
+  </div>
+

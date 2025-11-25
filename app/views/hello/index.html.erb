@@ -1,0 +1,115 @@
+<html>
+  <head>
+    <title>@Terrace</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'hello.index', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%#= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <h1><%= link_to "@Terrace", hello_index_path %></h1>
+      <div class="header-list">
+      <ul>
+        <li><nav><a href="#second-block">@Terraceとは</a></nav></li>
+        <li><nav><a href="#third-block">@Terraceの機能</a></nav></li>
+        <li><%= link_to "ログイン", new_user_session_path %></li>
+        <li><%= link_to "はじめる", new_user_registration_path %></li>
+      </ul>
+      </div>
+    </header>
+
+    <section id="first-block">
+        <div class="first-container">
+            <div class="first-image">
+                <%= image_tag "mainvisual.jpg", alt: "テラスのイメージ写真" %>
+            </div>
+        <div class="title-container">
+            <h1>
+                まぶしくなくていい、<br>
+                まぶしくないからいい。</h1>
+            <h3>@Terraceは、日々のひとこまや思い出を気軽に残せるSNSです</h3>
+            </div>
+        </div>
+        </section>
+
+    <section id="second-block">
+        <p class="info-title">
+            <h3>@Terraceとは</h3>
+        </p>
+        <div class="about-container">
+            <p>
+                日々のちょっとした出来事をだれかと共有したい。
+                <br>
+                でもこれを投稿したらどう思われるんだろう。
+                <br>
+                懐かしいあの人に「元気だよ」と伝えたい。
+                <br>
+                でもわざわざメッセージを送るのもなあ…。
+            </p>
+            <p>
+                @Terrace では、そんな迷いを気にせず親しい人と気軽に過ごせます。
+                <br>
+                着飾ることも背伸びすることもいりません。
+                <br>
+                ここは、ふわっと風が吹きわたるやすらぎのテラス。
+                <br>
+                みんながひとやすみできる場所です。
+            <p>
+                デジタルの中に、たしかな温もりと心地よさを。
+                <br>
+                どこか懐かしくて、心がふっとほどけるような時間を。
+                <br>
+                あなたの日々が、
+                <br>
+                もっとやさしく、もっと自然に、つながっていきますように。
+            </p>
+        </div>
+    </section>
+
+    <section id="third-block">
+        <p class="function-title">
+            <h3>@Terraceの機能</h3>
+        </p>
+        <div class="function-container">
+            <div class="function">
+                <p class="function-name">
+                    <span>グループで、やさしくつながる</span>
+                    <br>
+                    <br>
+                    親しい人だけの小さなスペースで<br>
+                    安心して思いを共有できます。<br>
+                    見られることを意識しすぎず、<br>
+                    大切な人との空間をそのままに。
+                </p>
+            </div>
+            <div class="function">
+                <p class="function-name">
+                    <span>コレミテ ― 誰かに見せたい瞬間を残す</span>
+                    <br>
+                    <br>
+                    今日のコーデ、うまくできたお菓子、きれいだった夕焼け。<br>
+                    「だれかに見てほしい！」を<br>
+                    写真とひとことで投稿できる場所です。<br>
+                    それぞれの日々が重なり、明日への活力となります。
+                </p>
+            </div>
+            <div class="function">
+                <p class="function-name">
+                    <span>アノコロ ― あのころの思い出を、一緒に振り返る</span>
+                    <br>
+                    <br>
+                    大切な思い出や記念日を<br>
+                    写真とともにアルバムに残せます。<br>
+                    見ページをめくるたび、「あのころ」の空気がそっとよみがえる。<br>
+                    懐かしい気持ちをみんなでシェアしよう。
+                </p>
+            </div>
+        </div>
+    </section>
+
+  </body>
+</html>

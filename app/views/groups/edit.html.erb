@@ -1,0 +1,11 @@
+
+<%= form_with(model: @group, local: true) do |f| %>
+  <div class="group-new-form">
+    <div class="gtoup-new-form-name">
+      <%= f.label :name, 'グループ名' %>
+      <%= f.text_field :name, class: 'form-control' %>
+      <%= f.collection_check_boxes :user_ids, User.all, :id, :name %>
+    </div>
+    <%= f.submit '更新', class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Feelplus" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <script src="https://kit.fontawesome.com/b3accdc2a2.js" crossorigin="anonymous"></script> 
+
+    <%= yield :head %>
+
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <body>
+  <div class="app-container">
+    <!-- ヘッダー -->
+    <% if controller_name == "tweets" || controller_name == "blogs" || (controller_name == "groups" && action_name != "new")  %>
+      <header class="normal-header">
+        <%= render 'shared/header' %>
+      </header>
+    <% end %>
+
+    <!-- それ以外のコンテンツ -->
+    <div class="content-container">
+      <!-- サイドバー -->
+      <% if controller_name == "tweets" || controller_name == "blogs" || (controller_name == "groups" && action_name != "new") %>
+        <aside class="sidebar">
+          <%= render 'shared/sidebar' %>
+        </aside>
+      <% end %>
+
+      <!-- メインコンテンツ -->
+      <div class="main-area">
+        <!-- グループヘッダー -->
+        <% if controller_name == "tweets" || (controller_name == "groups" && !["new", "edit"].include?(action_name)) %>
+          <div class="group-header">
+            <%= render 'shared/koremite_header' %>
+          </div>
+        <% end %>
+
+        <% if controller_name == "blogs"  %>
+          <div class="group-header">
+            <%= render 'shared/anokoro_header' %>
+          </div>
+        <% end %>
+
+        <!-- main -->
+        <main class="main">
+          <%= yield %>
+        </main>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<h1>プロフィール</h1>
+<% if @user.image.attached? %>
+     <%= image_tag  @user.image, size: '250x200'%>
+<% end %>
+<p><%= @user.profile %></p>
+
+<% if current_user.id == @user.id %>
+  <%= link_to "編集する", edit_user_registration_path %>
+<% end %>
+
+<% if @last_group.present? %>
+  <%= link_to "Tweet一覧に戻る", group_path(@last_group) %>
+<% else %>
+  <%= link_to "グループを作成する", new_group_path %>
+<% end %>
+
+<%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>

@@ -1,0 +1,49 @@
+/* グループヘッダー全体 */
+.group-details {
+  background-color: #fffaf5; /* ほんのりクリーム系で淡い */
+  border-radius: 20px;
+  padding: 20px 24px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04); /* 影も柔らかく */
+  text-align: left;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* グループ名 */
+.group-details h2 {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1.6rem;
+  color: #7a5a48; /* 文字も淡めのブラウンでやさしく */
+  margin: 0;
+}
+
+/* ボタン共通 */
+.group-details .add-photo-button,
+.group-details a {
+  display: inline-block;
+  text-decoration: none;
+  background: linear-gradient(135deg, #ffe7e0, #fff1e6); /* さらに淡いグラデーション */
+  color: #6b4c3b; /* ボタン文字も柔らかめ */
+  padding: 8px 16px;
+  border-radius: 24px;
+  margin-right: 8px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+/* ボタンホバー時 */
+.group-details .add-photo-button:hover,
+.group-details a:hover {
+  background: linear-gradient(135deg, #ffdeda, #fff3e0); /* 少し変化させる */
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+}
+
+/* ボタンを横並びにしたい場合 */
+.group-details .buttons-wrapper {
+  display: flex;
+  gap: 8px;
+}

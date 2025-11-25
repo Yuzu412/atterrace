@@ -1,0 +1,43 @@
+/* 投稿一覧コンテナ */
+.tweets-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 画像を大きく */
+  gap: 20px; /* 画像間隔を広げる */
+  justify-items: center;
+  padding: 20px;
+}
+
+/* 個々の投稿 */
+.tweet {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding-top: 100%; /* 正方形 */
+  border-radius: 16px; /* 角丸大きめ */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12); /* SNS感の影 */
+  background-color: #fff; /* SNSっぽい白背景 */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* ホバーで少し浮かせる */
+.tweet:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* 画像自体を正方形にフィット */
+.tweet img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* ホバーで少し拡大 */
+.tweet:hover img {
+  transform: translate(-50%, -50%) scale(1.05);
+}

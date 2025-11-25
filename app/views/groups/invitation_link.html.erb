@@ -1,0 +1,79 @@
+<div class="container">
+  <h2>「<%= @group.name %>」への招待リンク</h2>
+  <p>この招待リンクをパートナーに送ってください。<br>
+     パートナーがこのリンクから参加すると、グループに追加されます。</p>
+
+
+  <div class="invitation-link-display" style="display: flex; gap: 10px; margin-bottom: 20px;">
+    <%# join_with_token_group_url には :id (自動) と :token が必要 %>
+    <input class="form-control" id="copyTarget" type="text"
+           value="<%= join_with_token_group_url(@group, token: @group.invitation_token) %>" readonly>
+   
+    <button class="btn btn-outline-secondary copy-btn" type="button" onclick="copyToClipboard()">
+      <i class="far fa-copy"></i> コピー
+    </button>
+  </div>
+ 
+  <p id="copy-success" style="color: green; display: none;">コピーしました！</p>
+
+
+  <p class="sub-info">
+    <i class="fas fa-exclamation-triangle"></i>
+    この招待リンクは、あなたがこのページを訪問するたびに新しくなります。
+  </p>
+
+
+  <hr>
+  <%= link_to 'グループに戻る', group_path(@group), class: "btn btn-secondary" %>
+</div>
+
+
+<script>
+  // クリップボードへのコピー機能
+  function copyToClipboard() {
+    var copyTarget = document.getElementById("copyTarget");
+    copyTarget.select();
+   
+    try {
+      // モダンな方法 (navigator.clipboard)
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(copyTarget.value).then(function() {
+          showCopySuccess();
+        }).catch(function() {
+          legacyCopy(); // モダンな方法が失敗したら古い方法を試す
+        });
+      } else {
+        legacyCopy(); // モダンな方法が使えない
+      }
+    } catch (e) {
+      legacyCopy(); // エラー時
+    }
+  }
+
+
+  // 古い方法 (document.execCommand)
+  function legacyCopy() {
+    // document.execCommand は非推奨ですが、HTTPS以外の環境(ローカルなど)でも動作します
+    if (document.execCommand("Copy")) {
+      showCopySuccess();
+    } else {
+      alert('コピーに失敗しました。');
+    }
+  }
+
+
+  // 「コピーしました！」というメッセージを表示する関数
+  function showCopySuccess() {
+    var successMsg = document.getElementById("copy-success");
+    if (successMsg) {
+      successMsg.style.display = 'block';
+      setTimeout(function() {
+        successMsg.style.display = 'none';
+      }, 2000); // 2秒後にメッセージを消す
+    }
+  }
+</script>
+
+
+<%# Font Awesome (コピーアイコン用) の読み込み (もし application.html.erb にない場合) %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">

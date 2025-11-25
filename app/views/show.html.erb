@@ -1,0 +1,74 @@
+
+<div class="tweet">
+<div class="swiper mySwiper">
+  <div class="swiper-wrapper">
+    <% @tweet.images.each do |img| %>
+      <div class="swiper-slide">
+        <%= image_tag img, class: "tweet-slide-image" %>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- ナビゲーション -->
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+
+  <!-- ページネーション（下の丸ポチ） -->
+  <div class="swiper-pagination"></div>
+</div>
+
+  <% if user_signed_in? %>
+    <% like = current_user.likes.find_by(likeable: @tweet || @blog) %>
+
+    <% if like %>
+      <%= button_to polymorphic_path([@group, @tweet, like]), method: :delete do %>
+        <i class="fa-solid fa-heart" style="color:red;"></i>
+      <% end %>
+    <% else %>
+      <%= button_to polymorphic_path([@group, @tweet, :likes]), method: :post do %>
+        <i class="fa-regular fa-heart"></i>
+      <% end %>
+    <% end %>
+  <% end %>
+
+
+  <p><%= @tweet.created_at.strftime("%Y-%m-%d") %></p>
+  <%= link_to "編集する", edit_group_tweet_path(@group, @tweet) %>
+</div>
+
+<div class="comment">
+  <div class="user-profile">
+    <% if @tweet.user.image.attached? %>
+      <%= image_tag @tweet.user.image, size: '50x50' %>
+    <% end %>
+    <%= @tweet.user.profile %>
+  </div>
+  <p><%= @tweet.body %></p>
+</div>
+
+<div class="comment-wrapper">
+  <p>コメント一覧</p>
+  <% @comments.each do |c| %>
+    <div>
+      <%= c.user.profile unless c.user.blank? %>
+      <br>
+      <%= c.content %>
+    </div>
+    <br>
+  <% end %>
+
+  <% if user_signed_in? %>
+  <% @comment ||= Comment.new %>
+
+    <%= form_with(model: [@group, @tweet, @comment], local: true) do |f| %>
+      <%= f.text_area :content %>
+      <%= button_tag type: "submit" do %>
+        <i class="far fa-comments"></i> コメントする
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<%= link_to "Tweet一覧に戻る", group_path(@group) %>
+
+

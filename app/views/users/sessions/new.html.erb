@@ -1,0 +1,41 @@
+<body>
+    <header>
+      <h1><%= link_to "@Terrace", hello_index_path %></h1>
+      <div class="header-list">
+      <ul>
+        <li><%= link_to "はじめる", new_user_registration_path %></li>
+      </ul>
+      </div>
+    </header>
+  
+<div class="login-container">
+  <div class="login-card">
+    <h2>ログイン</h2>
+  </div>
+  <div class="login-form">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <h2>メールアドレス </h2><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+
+      <div class="field">
+        <h2>パスワード </h2><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <% if devise_mapping.rememberable? -%>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <h3>パスワードを保存</h3>
+      </div>
+      <% end -%>
+
+      <div class="actions">
+        <%= f.submit "ログイン" %>
+      </div>
+    <% end %>
+
+    <%= render "users/shared/links" %>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>タイトル</strong>
+  <%= @blog.title %>
+</p>
+
+<p>
+  <strong>時間</strong>
+  <%= @blog.start_time.strftime("%Y-%m-%d %H:%M") %>
+</p>
+
+<p>
+  <strong>内容</strong>
+  <%= @blog.content %>
+</p>
+
+<p>
+  <strong>写真</strong>
+  <% if @blog.image.attached? %>
+    <%= image_tag @blog.image, size: '250x200'%>
+  <% end %>
+</p>
+
+<% if user_signed_in? %>
+  <%= button_to group_blog_likes_path(@group, @blog), method: :post do %>
+    <i class="fas fa-heart" style="color: red;"></i> <%= @blog.likes.count %>
+  <% end %>
+<% else %>
+  <i class="fas fa-heart" style="color: red;"></i> <%= @blog.likes.count %>
+<% end %>
+
+  <div class="comment-wrapper">
+  <p>コメント一覧</p>
+  <% @comments.each do |c| %>
+    <div>
+      <%= c.user.profile unless c.user.blank? %>
+      <br>
+      <%= c.content %>
+    </div>
+    <br>
+  <% end %>
+
+  <% if user_signed_in? %>
+  <% @comment ||= Comment.new %>
+
+    <%= form_with(model: [@group, @blog, @comment], local: true) do |f| %>
+      <%= f.text_area :content %>
+      <%= button_tag type: "submit" do %>
+        <i class="far fa-comments"></i> コメントする
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<%= link_to 'Edit', edit_group_blog_path(@group, @blog) %> |
+<%= link_to 'Back', group_blogs_path(@group) %>

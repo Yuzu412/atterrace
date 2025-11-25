@@ -1,0 +1,76 @@
+
+<div class="tweet-show">
+<div class="tweet-show-images">
+  <% if @tweet.images.attached? %>
+    <% @tweet.images.each do |img| %>
+      <%= image_tag img, class: "show-image" %>
+    <% end %>
+  <% end %>
+</div>
+
+<% if user_signed_in? %>
+  <%= button_to group_tweet_likes_path(@group, @tweet), method: :post do %>
+    <i class="fas fa-heart" style="color: red;"></i> <%= @tweet.likes.count %>
+  <% end %>
+<% else %>
+  <i class="fas fa-heart" style="color: red;"></i> <%= @tweet.likes.count %>
+<% end %>
+
+  <p><%= @tweet.created_at.strftime("%Y-%m-%d") %></p>
+  <%= link_to "編集する", edit_group_tweet_path(@group, @tweet) %>
+  <%= button_to "削除する", group_tweet_path(@group, @tweet),
+      method: :delete,
+      data: { confirm: "本当に削除しますか？" } %>
+</div>
+
+<div class="comment">
+  <div class="user-profile">
+    <% if @tweet.user.image.attached? %>
+      <%= image_tag @tweet.user.image, size: '50x50' %>
+    <% end %>
+    <%= @tweet.user.profile %>
+  </div>
+  <p><%= @tweet.body %></p>
+</div>
+
+<div class="comment-wrapper">
+  <p>コメント一覧</p>
+  <% @comments.each do |c| %>
+    <div>
+      <%= c.user.profile unless c.user.blank? %>
+      <br>
+      <%= c.content %>
+    </div>
+    <br>
+  <% end %>
+
+  <% if user_signed_in? %>
+  <% @comment ||= Comment.new %>
+
+    <%= form_with(model: [@group, @tweet, @comment], local: true) do |f| %>
+      <%= f.text_area :content %>
+      <%= button_tag type: "submit" do %>
+        <i class="far fa-comments"></i> コメントする
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<%= link_to "Tweet一覧に戻る", group_path(@group) %>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    new Swiper(".mySwiper", {
+      loop: false,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  });
+</script>

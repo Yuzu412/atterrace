@@ -1,0 +1,30 @@
+
+<p id="notice"><%= notice %></p>
+
+<div class="p-8">
+  <% [["春", @spring_blogs], ["夏", @summer_blogs], ["秋", @autumn_blogs], ["冬", @winter_blogs]].each do |season, blogs| %>
+    <div class="mb-10">
+      <h3 class="text-xl font-semibold mb-3"><%= season %></h3>
+
+      <% if blogs.any? %>
+        <div class="grid grid-cols-3 gap-6">
+          <% blogs.each do |blog| %>
+            <div class="bg-gray-100 rounded-lg p-4 hover:bg-gray-200 transition">
+              <% if blog.image.attached? %>
+                <%= link_to group_blog_path(blog.group, blog) do %>
+                  <%= image_tag blog.image, class: "w-full h-40 object-cover rounded mb-2" %>
+                <% end %>
+              <% end %>
+
+              <p class="font-medium"><%= blog.title %></p>
+              <p class="text-sm text-gray-500"><%= blog.created_at.strftime("%Y年%m月%d日") %></p>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="text-gray-400">この季節の投稿はまだありません。</p>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+

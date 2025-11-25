@@ -1,0 +1,33 @@
+<div class="container">
+  <%# @group は controller の join アクションでセットされます %>
+  <% if @group %>
+    <h2>グループ参加の確認</h2>
+    <p>
+      <strong>「<%= @group.name %>」</strong>に参加しますか？
+    </p>
+ 
+    <div class="join-form">
+      <%# join_group_group_path(@group) に POST (method: :post) します %>
+      <%# controller の join_group アクションが実行されます %>
+      <%= form_with(url: join_group_group_path(@group), method: :post, local: true) do |f| %>
+ 
+        <%# どの招待リンクから来たかをサーバーに伝えるため、トークンを隠しフィールドとして送信します %>
+        <%# @token は controller の join アクションでセットされます %>
+        <%= f.hidden_field :invitation_token, value: @token %>
+ 
+        <%= f.submit "はい、参加する" ,class: "btn btn-primary"%>
+      <% end %>
+     
+      <hr>
+      <%= link_to 'いいえ、参加しない', groups_path, class: "btn btn-secondary" %>
+    </div>
+   
+  <% else %>
+    <%#
+      controller の join アクションのバリデーションにより、
+      @group が nil (無効なリンク) の場合はリダイレクトされるため、
+      通常この部分は表示されません。
+    %>
+    <p>無効な招待リンクです。</p>
+  <% end %>
+</div>

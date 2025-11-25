@@ -1,0 +1,34 @@
+<div class="tweets-container">
+  <% @tweets.each do |t| %>
+    <% t.images.each do |img| %>
+      <div class="tweet">
+        <%= link_to group_tweet_path(@group, t) do %>
+          <%= image_tag img %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<%# JavaScript (ファイルが選択されたら自動的にフォームを送信) %>
+<script>
+  // この関数は、アップロードボタンのイベントリスナーを設定します
+  function setupUploadListener() {
+    const uploadInput = document.getElementById('file-upload-input');
+    const uploadForm = document.getElementById('upload-form');
+
+
+    // 要素が存在するか (null ではないか) を確認してからイベントリスナーを追加
+    if (uploadInput && uploadForm) {
+      uploadInput.addEventListener('change', function() {
+        // ファイルが選択されたらフォームを自動送信
+        uploadForm.submit();
+      });
+    }
+  }
+
+
+  // 初回ページ読み込み完了時に実行
+  document.addEventListener('DOMContentLoaded', setupUploadListener);
+  // Turbo (Turbolinks) によるページ遷移完了時にも実行
+  document.addEventListener('turbo:load', setupUploadListener);
+</script>

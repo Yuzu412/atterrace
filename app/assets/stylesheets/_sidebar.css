@@ -1,0 +1,82 @@
+/* ▼ サイドバー全体 */
+.sidebar a {
+  text-decoration: none; /* リンクの下線を消す */
+  color: inherit; /* テキストカラーをsummaryと合わせる */
+  display: block;
+  padding: 12px 20px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.sidebar a:hover {
+  background-color: #f5f5f5;
+}
+
+.sidebar li {
+    list-style: none;
+}
+
+/* ▼ ドロップダウン中身（左揃え調整） */
+.sidebar .dropdown-content {
+  margin-left: 0; /* 左マージンをリセット */
+  padding-left: 20px; /* summary と同じ余白で揃える */
+  margin-top: 4px;
+  border-left: 2px solid #e5e5e5;
+  background-color: #fafafa;
+  border-radius: 6px;
+}
+
+/* ▼ ドロップダウン内のリスト */
+.sidebar .dropdown-content li {
+  padding: 8px 0;
+  font-size: 14px;
+  color: #555;
+  list-style: none;
+}
+
+.sidebar .dropdown-content li:hover {
+  color: #000;
+}
+
+/* ▼ summaryのデフォルトマーカーを消す */
+.sidebar summary::-webkit-details-marker {
+  display: none;
+}
+
+/* ▼ ドロップダウン中身（即時表示） */
+.sidebar .dropdown-content {
+  margin-left: 16px;
+  margin-top: 4px;
+  padding-left: 12px;
+  border-left: 2px solid #e5e5e5;
+  background-color: #fafafa;
+  border-radius: 6px;
+}
+
+/* ▼ ドロップダウン内のリスト */
+.sidebar .dropdown-content li {
+  padding: 8px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.sidebar .dropdown-content li:hover {
+  color: #000;
+}
+
+/* ▼ 写真追加ボタン */
+.add-photo-button {
+  display: block;
+  padding: 8px 12px;
+  margin-top: 6px;
+  background-color: #f0f4ff;
+  color: #2a56d2;
+  border-radius: 6px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.add-photo-button:hover {
+  background-color: #e2ecff;
+}

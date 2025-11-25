@@ -1,0 +1,36 @@
+<h3>新規投稿</h3>
+
+<%= form_with(model: [@group, @tweet], local: true, html: { id: 'upload-form' }) do |f| %>
+
+    <!-- ★ エラーメッセージを表示する場所（ここに追加！） -->
+  <% if @tweet.errors.any? %>
+    <div class="error-messages">
+      <ul>
+        <% @tweet.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <!-- ★ ここまで -->
+
+
+  <div class="field">
+    <%= f.label :キャプション %>
+    <%= f.text_field :body, size: 140 %>
+  </div>
+
+  <!-- ★ 画像アップロード（複数対応） -->
+  <div class="field">
+    <%= f.file_field :images, multiple: true, direct_upload: true,
+          id: 'file-upload-input', style: 'display: none;' %>
+
+    <%= f.label :images, "写真を追加",
+          class: "add-photo-button",
+          for: 'file-upload-input' %>
+  </div>
+
+  <%= f.submit "OK" %>
+<% end %>
+
+<%= link_to "一覧に戻る", group_path(@group) %>

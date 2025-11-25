@@ -1,0 +1,38 @@
+<h1>Hidamari+</h1>
+<%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>
+<h3>投稿一覧</h3>
+<%= link_to "新規投稿へ", new_tweet_path %>
+<div class="tweets-container">
+    <% if user_signed_in? %>
+        <%= link_to "マイページへ", user_path(current_user.id) %>
+    <% end %>
+    <% @tweets.each do |t| %>
+        <div class="tweet">
+            <% if t.user.image.attached? %>
+                <%= image_tag  t.user.image, size: '250x200'%>
+            <% end %>
+            <% if t.image.attached? %>
+                <%= image_tag t.image, size: '250x200'%>
+            <% end %>
+            <%= t.user.email %>
+            <%= t.body %>
+        <% if user_signed_in? %>
+            <% if current_user.already_liked?(t) %>
+                <%= link_to tweet_like_path(id: t.id, tweet_id: t.id), method: :delete do %>
+                    <i class="fa-solid fa-heart" style="color:red;"></i>
+                <% end %>
+            <% else %>
+                <%= link_to tweet_likes_path(id: t.id, tweet_id: t.id), method: :post do %>
+                    <i class="fa-regular fa-heart"></i>
+                <% end %>
+            <% end %>
+        <% else %>
+            <i class="fa-regular fa-heart"></i>
+        <% end %>
+            <%= t.created_at %>
+            <%= link_to "詳細へ", tweet_path(t.id) %>
+            <%= link_to "編集する", edit_tweet_path(t.id) %>
+            <%= button_to "削除する", tweet_path(t.id), method: :delete %>
+        </div>
+    <% end %>
+</div>

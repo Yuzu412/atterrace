@@ -1,0 +1,9 @@
+<div class="user-profile">
+  <% if current_user.image.attached? %>
+    <%= image_tag current_user.image, size: '250x200' %>
+  <% end %>
+  <p><%= current_user.profile %></p>
+
+  <%= link_to "編集する", edit_user_registration_path, onclick: "sessionStorage.setItem('return_to', window.location.href)" %>
+  <%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>
+</div>

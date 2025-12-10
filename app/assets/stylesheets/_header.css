@@ -1,8 +1,54 @@
+/* ▼ ヘッダー */
+.main-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;       /* ← 余白を広げて見切れ防止 */
+  box-sizing: border-box;/* ← 必須！！ */
+  z-index: 10;
+  background: white;
+}
+
+/* ▼ 文字だけ固定 */
+.main-header h1 a {
+  position: relative;  /* スクロール時も固定 */
+  z-index: 2000;
+}
+
+.main-header h1 a {
+    text-decoration: none;
+    color: #444;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.main-header ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.main-header a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.main-header a:hover {
+    color: #d2691e;
+}
 /* ▼ ドロップダウン全体 */
 .dropdown {
   position: relative;
   display: inline-block;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  
 }
 
 /* ▼ summary部分（クリックする部分） */

@@ -1,37 +1,38 @@
-
-
-body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    margin: 0;
-    padding-top: 50px; /* ヘッダー固定分の余白 */
-    line-height: 1.6;
-    background-color: #f9f9f9;
-    color: #333;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px; /* 少し余裕をもたせる */
-    background-color: #fff;
-    border-bottom: 1px solid #ccc;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    box-sizing: border-box; /* パディング込みで幅調整 */
-    z-index: 1000;
+/* ▼ ヘッダー */
+.hello-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;       /* ← 余白を広げて見切れ防止 */
+  box-sizing: border-box;/* ← 必須！！ */
+  z-index: 10;
+  background: transparent;
 }
 
-header h1 a {
+/* ▼ 文字だけ固定 */
+.hello-header h1 a {
+  position: relative;  /* スクロール時も固定 */
+  z-index: 2000;
+}
+
+.hello-header h1 a {
     text-decoration: none;
     color: #444;
     font-weight: bold;
     font-size: 24px;
 }
 
-header ul {
+.hello-header ul {
     display: flex;
     gap: 20px;
     list-style: none;
@@ -39,142 +40,220 @@ header ul {
     padding: 0;
 }
 
-header a {
+.hello-header a {
     text-decoration: none;
     color: #555;
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
-header a:hover {
+.hello-header a:hover {
     color: #d2691e;
 }
 
-/* セクション共通 */
-section {
-    border: 1px solid #ccc;
-    padding: 50px;
-    box-sizing: border-box;
-    background-color: #fff;
-    margin: 20px;
-    margin-top: 80px;
-    border-radius: 10px;
-}
 
-/* ファーストブロック */
+
+/* ▼ ファーストブロック */
 #first-block {
-    display: flex;
-    position: relative;
-    height: calc(100vh - 80px); /* ヘッダー高さ分を引く */
-    overflow: hidden;
-    background-color: #fff;
-}
-
-.first-container {
-    display: flex;
-    width: 100%;
-    height: 100%;
-}
-
-.first-image {
-    flex: 1;
-    overflow: hidden;
-}
-
-.first-image img {
-    width: 110%;
-    height: 100%;
-    object-fit: contain;
-    object-position: left center;
+  position: relative;
+  width: 100%;
+  height: auto;
 }
 
 .title-container {
-    position: absolute;
-    right: 5%;
-    top: 50%;
-    transform: translateY(-50%);
-    max-width: 650px;
-    background-color: rgba(255, 255, 255, 0.7);
-    padding: 30px;
-    border-radius: 15px;
+  position: absolute;   /* 親要素内で絶対配置 */
+  top: 25%;
+  left: 80%;
+  transform: translate(-50%, -50%); /* まんなかに配置 */
+  white-space: nowrap;  
+  text-align: center;
+  color: rgb(95, 95, 95);
+  z-index: 10;          /* 文字を前面へ */
 }
 
-.title-container:hover {
-    background-color: rgba(255, 245, 210, 0.85);
+.hero-bg {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+  padding: 0;
+  line-height: 0;       /* ← 画像下の隙間対策 */
 }
+
+
+
+/* ▼ ベース設定（PCサイズ想定） */
+
 
 .title-container h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
-    color: #222;
-    line-height: 1.2;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  letter-spacing: 0.03em;
+  font-size: 35px;
+  font-weight: 500;
+  color: #5a5a5a;
+  letter-spacing: 1.2px;
 }
 
 .title-container h3 {
+  font-family: "Shippori Mincho B1", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #5a5a5a;
+  letter-spacing: 1.2px;
+  background: linear-gradient(transparent 60%, #fffbe2 60%);
+}
+
+/* ▼ 画面幅が 1024px 以下（小さめのPC・タブレット横向き） */
+@media (max-width: 1024px) {
+  .title-container {
+    position: absolute; 
+    top: 55%;
+    left: 50%;
+  }
+  .title-container h1 {
+    font-size: 32px;
+  }
+  .title-container h3 {
     font-size: 20px;
-    color: #555;
+  }
+}
+
+/* ▼ 画面幅が 768px 以下（iPad・スマホ大） */
+@media (max-width: 768px) {
+  .title-container {
+    top: 55%;
+    left: 50%;
+  }
+  .title-container h1 {
+    font-size: 27px;
+  }
+  .title-container h3 {
+    font-size: 15px;
+  }
+}
+
+/* ▼ 画面幅が 480px 以下（スマホ） */
+@media (max-width: 480px) {
+  .title-container {
+    top: 55%;
+    padding: 0 10px;  /* 画面端に寄りすぎ防止 */
+  }
+  .title-container h1 {
+    font-size: 26px;
+    line-height: 1.3;
+  }
+  .title-container h3 {
+    font-size: 16px;
+    line-height: 1.5;
+  }
 }
 
 /* セカンドブロック */
+/* second-block が画像にめりこまないようにする */
 #second-block {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 160px;
+    background-image: url(atterrace2.jpg);
+    background-size: cover;
+    background-position: center;
 }
 
-.info-title h3 {
-    font-size: 24px;
-    margin-bottom: 30px;
-    color: #111;
-    text-align: center;
+#second-block h3 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 60px;
+    color: #4f6457;
 }
 
 .about-container p {
     margin-bottom: 70px;
-    font-size: 16px;
+    font-size: 18px;
+    line-height: 1.9;
+    color: #4f6457;
     text-align: center;
 }
 
-/* サードブロック */
+/* ▼ セクション全体 */
 #third-block {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  padding: 160px 0;
+  background-color: #FFF8F2;
+  text-align: center;
 }
 
-.function-title h3 {
-    font-size: 24px;
-    margin-bottom: 30px;
-    color: #111;
-    text-align: center;
+/* ▼ タイトル */
+#third-block h3 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 60px;
+  color: #4f6457;
 }
 
+/* ▼ 機能全体のコンテナ */
 .function-container {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  width: 80%;
+  margin: 0 auto;
 }
 
+/* ▼ 各ブロック */
+/* ▼ 機能カード */
 .function {
-    flex: 1;
-    min-width: 250px;
-    max-width: 300px;
-    background-color: #fdfdfd;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* hoverアニメーション追加 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+
+  background: #ffffff; /* カード背景 */
+  border-radius: 18px;
+  padding: 40px 50px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08); /* ふわっと */
 }
 
-.function:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+
+/* ▼ テキスト部分 */
+.function-name {
+  width: 50%;
+  font-size: 18px;
+  line-height: 1.9;
+  color: #4f6457;
+  text-align: center;
 }
 
 .function-name span {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 10px;
-    color: #333;
+  font-size: 24px;
+  font-weight: 700;
+  color: #d9b44a;
+}
+
+/* ▼ 画像 */
+.function-image {
+  width: 45%;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+/* ▼ スマホ対応 */
+@media screen and (max-width: 768px) {
+  .function {
+    flex-direction: column;
+    text-align: center;
+    padding: 28px;
+  }
+
+  .function:nth-child(even) {
+    flex-direction: column;
+  }
+
+  .function-name, .function-image {
+    width: 100%;
+  }
+}
+
+footer{
+  height: 50px;
+  background-color: #ede1bc;
 }

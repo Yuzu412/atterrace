@@ -54,4 +54,7 @@
 </div>
 
 <%= link_to 'Edit', edit_group_blog_path(@group, @blog) %> |
-<%= link_to 'Back', group_blogs_path(@group) %>
+<%= link_to 'Back', season_group_blogs_path(@group, season: "spring") if @group&.persisted? %>
+<%= button_to "削除する", group_blog_path(@group, @blog),
+      method: :delete,
+      data: { confirm: "本当に削除しますか？" } %>

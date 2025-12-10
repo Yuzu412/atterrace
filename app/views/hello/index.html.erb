@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <header>
+    <div class=hello-header>
       <h1><%= link_to "@Terrace", hello_index_path %></h1>
       <div class="header-list">
       <ul>
@@ -20,20 +20,18 @@
         <li><%= link_to "はじめる", new_user_registration_path %></li>
       </ul>
       </div>
-    </header>
+    </div>
 
     <section id="first-block">
-        <div class="first-container">
-            <div class="first-image">
-                <%= image_tag "mainvisual.jpg", alt: "テラスのイメージ写真" %>
-            </div>
+    
+        <img src="<%= asset_path 'atterrace.jpg' %>" class="hero-bg" alt="背景画像">
         <div class="title-container">
             <h1>
                 まぶしくなくていい、<br>
                 まぶしくないからいい。</h1>
             <h3>@Terraceは、日々のひとこまや思い出を気軽に残せるSNSです</h3>
             </div>
-        </div>
+
         </section>
 
     <section id="second-block">
@@ -85,10 +83,12 @@
                     見られることを意識しすぎず、<br>
                     大切な人との空間をそのままに。
                 </p>
+                <%= image_tag "function1.jpg", class: "function-image" %>
             </div>
             <div class="function">
+                <%= image_tag "function2.jpg", class: "function-image" %>
                 <p class="function-name">
-                    <span>コレミテ ― 誰かに見せたい瞬間を残す</span>
+                    <span>コレミテ<br> ― 誰かに見せたい瞬間を残す ―</span>
                     <br>
                     <br>
                     今日のコーデ、うまくできたお菓子、きれいだった夕焼け。<br>
@@ -99,17 +99,21 @@
             </div>
             <div class="function">
                 <p class="function-name">
-                    <span>アノコロ ― あのころの思い出を、一緒に振り返る</span>
+                    <span>アノコロ<br> ― あのころの思い出を、一緒に振り返る ―</span>
                     <br>
                     <br>
                     大切な思い出や記念日を<br>
                     写真とともにアルバムに残せます。<br>
-                    見ページをめくるたび、「あのころ」の空気がそっとよみがえる。<br>
-                    懐かしい気持ちをみんなでシェアしよう。
+                    ページをめくるたび、「あのころ」の空気がそっとよみがえる。<br>
+                    懐かしい気持ちをみんなでシェアしましょう。
                 </p>
+                <%= image_tag "function1.jpg", class: "function-image" %>
             </div>
         </div>
     </section>
+
+  <footer>	
+  </footer>
 
   </body>
 </html>

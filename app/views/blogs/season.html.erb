@@ -1,0 +1,33 @@
+<div class="p-8">
+  <div class="season-header">
+    <%= link_to season_group_blogs_path(@group, season: @prev_season), class: "season-arrow" do %>
+      <i class="fa-solid fa-arrow-left"></i>
+    <% end %>
+
+    <h2 class="season-title <%= @season %> flex-1 text-center ">
+      <%= { "spring" => "春", "summer" => "夏", "autumn" => "秋", "winter" => "冬" }[@season] %> の投稿
+    </h2>
+
+    <%= link_to season_group_blogs_path(@group, season: @next_season), class: "season-arrow" do %>
+      <i class="fa-solid fa-arrow-right"></i>
+    <% end %>
+  </div>
+
+  <% if @blogs.any? %>
+    <div class="grid grid-cols-3 gap-6">
+      <% @blogs.each do |blog| %>
+        <%= link_to group_blog_path(blog.group, blog) do %>
+          <div class="bg-gray-100 rounded-lg p-4 hover:bg-gray-200 transition">
+            <% if blog.image.attached? %>
+              <%= image_tag blog.image, class: "w-full h-40 object-cover rounded mb-2" %>
+            <% end %>
+            <p class="font-medium"><%= blog.title %></p>
+            <p class="text-sm text-gray-500"><%= blog.created_at.strftime("%Y年%m月%d日") %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-gray-400">この季節の投稿はまだありません。</p>
+  <% end %>
+</div>

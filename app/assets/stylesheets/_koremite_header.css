@@ -1,49 +1,49 @@
-/* グループヘッダー全体 */
+/* ▼ グループヘッダー全体 */
 .group-details {
-  background-color: #fffaf5; /* ほんのりクリーム系で淡い */
+  backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.35); /* 透明度高め */
   border-radius: 20px;
-  padding: 20px 24px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04); /* 影も柔らかく */
+  padding: 32px 32px; /* 余白多め */
   text-align: left;
-  margin-bottom: 24px;
+
+
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 20px; /* 行間広く */
 }
 
-/* グループ名 */
+/* ▼ グループ名 */
 .group-details h2 {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 1.6rem;
-  color: #7a5a48; /* 文字も淡めのブラウンでやさしく */
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #686868;
   margin: 0;
 }
 
-/* ボタン共通 */
-.group-details .add-photo-button,
-.group-details a {
-  display: inline-block;
-  text-decoration: none;
-  background: linear-gradient(135deg, #ffe7e0, #fff1e6); /* さらに淡いグラデーション */
-  color: #6b4c3b; /* ボタン文字も柔らかめ */
-  padding: 8px 16px;
-  border-radius: 24px;
-  margin-right: 8px;
+/* ▼ ボタンシンプル */
+.group-details a,
+.group-details .add-photo-button {
+  background: rgba(255, 255, 255, 0.55); /* ほぼ白透明 */
+  border: 1px solid rgba(0,0,0,0.08);
+  padding: 10px 22px;
+  border-radius: 28px;
   font-weight: 600;
-  transition: all 0.2s ease;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  text-decoration: none;
+  color: #333;
+
+  transition: 0.25s ease;
 }
 
-/* ボタンホバー時 */
-.group-details .add-photo-button:hover,
-.group-details a:hover {
-  background: linear-gradient(135deg, #ffdeda, #fff3e0); /* 少し変化させる */
-  transform: translateY(-1px);
-  box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+/* ▼ ホバー */
+.group-details a:hover,
+.group-details .add-photo-button:hover {
+  background: #F6F4EE;
+  transform: translateY(-2px);
 }
 
-/* ボタンを横並びにしたい場合 */
+/* ▼ ボタン並べる */
 .group-details .buttons-wrapper {
   display: flex;
-  gap: 8px;
+  gap: 10px;
 }

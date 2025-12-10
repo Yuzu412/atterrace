@@ -1,0 +1,136 @@
+/* ▼ 季節ナビ全体 */
+.season-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 18px;
+  border-radius: 14px;
+}
+
+/* ▼ タイトル */
+.season-title.flex-1.text-center {
+  padding: 6px 16px;
+  border-bottom: 2px solid transparent; /* アクセントに金色 */
+  border-radius: 8px;
+  color: #4f6457;
+}
+
+/* ▼ 春: 桜っぽいピンク */
+.season-title.spring.flex-1.text-center {
+  border-bottom-color: #f4a7b9;
+}
+
+/* ▼ 夏: 空色 */
+.season-title.summer.flex-1.text-center {
+  border-bottom-color: #75b1a9;
+}
+
+/* ▼ 秋: ゴールド */
+.season-title.autumn.flex-1.text-center {
+  border-bottom-color: #d9b44a;
+}
+
+/* ▼ 冬: クールグレー */
+.season-title.winter.flex-1.text-center {
+  border-bottom-color: #4f6457;
+}
+
+/* ▼ 矢印ボタン */
+.season-arrow {
+  width: 46px;
+  height: 46px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+  text-decoration: none; /* 下線なし */
+  color: #4f6457;
+}
+
+/* ▼ ホバー */
+.season-arrow:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  background-color: #f3efe6;
+}
+/* 投稿一覧コンテナ（既存: grid grid-cols-3 gap-6） */
+.grid.grid-cols-3.gap-6 {
+  display: grid; /* 念のため */
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* 可変で見やすく */
+  gap: 24px;
+  padding: 20px;
+  align-items: start;
+}
+
+/* 投稿カード（既存: bg-gray-100 rounded-lg p-4 hover:bg-gray-200 transition） */
+.grid.grid-cols-3.gap-6 .bg-gray-100.rounded-lg.p-4.transition {
+  background-color: #ffffff;            /* 白めに統一 */
+  border-radius: 16px;                  /* 角丸大きめ */
+  padding: 16px;                        /* 少し調整 */
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ホバーで浮かせる（既存の hover:bg を上書きしない） */
+.grid.grid-cols-3.gap-6 .bg-gray-100.rounded-lg.p-4.transition:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+  background-color: #fbfbfb; /* 微妙な差色で境界を和らげる */
+}
+
+/* 画像（既存: w-full h-40 object-cover rounded mb-2） */
+.grid.grid-cols-3.gap-6 .w-full.h-40.object-cover.rounded.mb-2 {
+  width: 100%;
+  height: 240px;            /* もう少し大きく見せる */
+  object-fit: cover;        /* そのまま */
+  border-radius: 12px;      /* card 内での丸み */
+  margin-bottom: 12px;
+  transition: transform 0.35s ease;
+  display: block;
+}
+
+/* カードホバー時に画像を軽く拡大 */
+.grid.grid-cols-3.gap-6 .bg-gray-100.rounded-lg.p-4.transition:hover .w-full.h-40.object-cover.rounded.mb-2 {
+  transform: scale(1.05);
+}
+
+/* タイトル/日付周りの余白調整（既存のクラスと共存） */
+.grid.grid-cols-3.gap-6 .bg-gray-100.rounded-lg.p-4.transition .font-medium {
+  margin: 0 0 6px 0;
+  line-height: 1.2;
+  color: #111827; /* 濃い目のテキスト */
+}
+
+.grid.grid-cols-3.gap-6 .bg-gray-100.rounded-lg.p-4.transition .text-sm.text-gray-500 {
+  margin: 0;
+  color: #6b7280; /* Tailwind の gray-500 相当 */
+  font-size: 0.9rem;
+}
+/* 投稿一覧内のリンクの下線を消す */
+.grid.grid-cols-3.gap-6 a {
+  text-decoration: none;
+}
+
+/* 小さい画面では列数を落とす（Tailwind と干渉しないようにメディアクエリで補助） */
+@media (max-width: 900px) {
+  .grid.grid-cols-3.gap-6 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid.grid-cols-3.gap-6 .w-full.h-40.object-cover.rounded.mb-2 {
+    height: 200px;
+  }
+}
+
+@media (max-width: 520px) {
+  .grid.grid-cols-3.gap-6 {
+    grid-template-columns: 1fr;
+  }
+  .grid.grid-cols-3.gap-6 .w-full.h-40.object-cover.rounded.mb-2 {
+    height: 180px;
+  }
+}

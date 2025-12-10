@@ -13,15 +13,15 @@
       </div>
     </li>
     <li><%= link_to "コレミテ", group_path(@group) if @group&.persisted? %></li>
-    <li><%= link_to "アノコロ", group_blogs_path(@group) if @group&.persisted? %></li>
-    <li>
+    <li><%= link_to "アノコロ", season_group_blogs_path(@group, season: "spring") if @group&.persisted? %></li>
       <div class="dropdown">
         <details>
           <summary>写真を追加</summary>
           <div class="dropdown-content">
             <ul>
               <% if @group&.persisted? %>
-                <li><%= link_to "コレミテに写真を追加", new_group_tweet_path(@group), class: "add-photo-button" %></li>
+                <li><a href="#" class="sticky-button">
+                  <%= link_to "コレミテに写真を追加", new_group_tweet_path(@group), class: "add-photo-button" %></a></li>
                 <li><%= link_to 'アノコロに写真を追加', new_group_blog_path(@group), class: "add-photo-button" %></li>
               <% end %>
             </ul>

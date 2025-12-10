@@ -1,14 +1,158 @@
-/* ▼ Tweet 詳細ページ用 */
+/* ▼ 全体（tweet-show） */
+.tweet-show {
+  margin-bottom: 24px;
+}
+
+/* ▼ 画像をインスタみたいに大きく＆中央揃え */
 .tweet-show-images {
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 12px;
-  margin-bottom: 20px;
+  align-items: left;
+  margin-bottom: 16px;
 }
 
 .show-image {
   width: 100%;
-  max-width: 300px; /* 好きに変えてOK */
+  max-width: 600px;      /* インスタのPC版に近い横幅 */
   border-radius: 12px;
   object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* めちゃ薄い影 */
+}
+
+/* ▼ ハートボタン（シンプル） */
+.tweet-show form button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #d9534f;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tweet-show i.fas.fa-heart {
+  color: #d9534f;
+}
+
+/* ▼ 日付 */
+.tweet-show p {
+  margin-top: 8px;
+  color: #444;
+  font-size: 14px;
+}
+
+/* ▼ 編集・削除ボタン（下線だけの超シンプル） */
+.tweet-show a {
+  margin-right: 14px;
+  font-size: 14px;
+  color: #007aff;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: 0.2s ease;
+}
+
+.tweet-show a:hover {
+  border-bottom: 1px solid #007aff;
+}
+
+/* コメント全体 */
+.comment-wrapper {
+  margin-top: 30px;
+  padding: 0 10px;
+}
+
+/* コメントバルーン共通 */
+.comment-bubble {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 18px;
+  max-width: 80%;
+}
+
+/* アイコン */
+.comment-icon img,
+.icon-placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ddd;
+  margin-right: 10px;
+}
+
+/* 吹き出し本体 */
+.comment-body {
+  max-width: 100%;
+}
+
+.comment-text {
+  padding: 12px 16px;
+  border-radius: 16px;
+  font-size: 15px;
+  line-height: 1.5;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+}
+
+/* 投稿者名 */
+.comment-name {
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 4px;
+}
+
+/* --- 相手側（左） --- */
+.comment-bubble.theirs {
+  flex-direction: row;
+}
+
+.comment-bubble.theirs .comment-text {
+  background: #ffffff;
+  border: 1px solid #eee;
+}
+
+/* --- 自分側（右） --- */
+.comment-bubble.mine {
+  flex-direction: row-reverse;
+  margin-left: auto;
+}
+
+.comment-bubble.mine .comment-icon {
+  margin-left: 10px;
+  margin-right: 0;
+}
+
+.comment-bubble.mine .comment-text {
+  background: #C7F7C1; /* 淡いLINE緑 */
+  border: 1px solid #B3E6AE;
+}
+
+/* 入力欄（下） */
+.comment-form {
+  margin-top: 20px;
+}
+
+.comment-input {
+  width: 100%;
+  min-height: 70px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* ▼ 戻るリンク（シンプル） */
+.tweet-back {
+  display: inline-block;
+  margin-top: 30px;
+  color: #007aff;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.tweet-back:hover {
+  text-decoration: underline;
 }

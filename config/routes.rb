@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     resources :blogs do
       resources :likes, only: [:create]
       resources :comments, only: [:create]
+      collection do
+        get "season/:season", to: "blogs#season", as: :season
+      end
     end
     resources :tweets, only: [:show, :new, :create, :edit, :update, :destroy] do
       resources :likes, only: [:create]

@@ -1,0 +1,79 @@
+/* ===== プロフィール全体 ===== */
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+
+  text-align: center;
+}
+
+/* ===== プロフィール画像 ===== */
+.user-profile img {
+  width: 180px;
+  height: 180px;
+
+  border-radius: 18px;      /* 少し角丸（正円にしたければ50%） */
+  object-fit: cover;        /* ← 重要：引き延ばさずトリミング */
+  object-position: center;
+
+  background: #eee;
+}
+
+/* ===== プロフィール文 ===== */
+.user-profile p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #4f6457;
+
+  margin: 6px 0 10px;
+  white-space: pre-wrap; /* 改行対応 */
+}
+
+/* ===== アクションボタン列 ===== */
+.user-profile a,
+.user-profile form {
+  width: 100%;
+}
+
+/* 編集・ログアウト共通 */
+.user-profile a,
+.user-profile button {
+  display: block;
+  width: 100%;
+
+  padding: 10px 0;
+  border-radius: 999px;
+
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+/* 編集する */
+.user-profile a {
+  background: rgba(255,255,255,0.6);
+  border: 1px solid rgba(0,0,0,0.1);
+  color: #4f6457;
+  text-decoration: none;
+}
+
+.user-profile a:hover {
+  background: #f6f4ee;
+}
+
+/* ログアウト */
+.user-profile button {
+  margin-top: 6px;
+
+  background: #f2dede;
+  border: none;
+  color: #a94442;
+}
+
+.user-profile button:hover {
+  background: #e4c1c1;
+}

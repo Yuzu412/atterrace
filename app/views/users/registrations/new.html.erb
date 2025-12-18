@@ -1,11 +1,15 @@
-<header>
-  <h1><%= link_to "@Terrace", hello_index_path %></h1>
+<body class="signup-page">
+    <div class="signup-header">
+      <h1><%= link_to "@Terrace", hello_index_path %></h1>
       <div class="header-list">
       <ul>
+        <li><nav><a href="#second-block">@Terraceとは</a></nav></li>
+        <li><nav><a href="#third-block">@Terraceの機能</a></nav></li>
         <li><%= link_to "ログイン", new_user_session_path %></li>
       </ul>
       </div>
-</header>
+    </div>
+
 
 <div class="signup-container">
   <div class="signup-card">
@@ -17,7 +21,7 @@
 
       <div class="field">
         <%= f.label :ニックネーム %><br />
-        <%= f.text_field :name, autofocus: true %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
       </div>
 
       <div class="field">

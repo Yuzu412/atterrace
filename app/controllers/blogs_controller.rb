@@ -47,7 +47,7 @@ class BlogsController < ApplicationController
   def update
     @blog = @group.blogs.find(params[:id])
     if @blog.update(blog_parameter)
-      redirect_to season_group_blogs_path(@group, season: "spring"), notice: "編集しました"
+      redirect_to group_blog_path(@group, @blog), notice: "更新しました！"
     else
       render :edit
     end

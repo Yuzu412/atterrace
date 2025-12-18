@@ -1,0 +1,99 @@
+/* ===== 新規投稿（Blog）全体 ===== */
+.new-blog {
+  max-width: 640px;
+  margin: 30px;
+  padding: 40px 20px;
+}
+
+/* 見出し */
+.new-blog h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 28px;
+  color: #3a3a3a;
+}
+
+/* 各入力ブロック */
+.new-blog .title,
+.new-blog .time,
+.new-blog .content,
+.new-blog .image {
+  margin-bottom: 22px;
+}
+
+/* ラベル */
+.new-blog label {
+  display: block;
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+/* テキスト入力 */
+.new-blog input[type="text"],
+.new-blog textarea,
+.new-blog select {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 1px solid #e5e5e5;
+  background: #fff;
+  transition: 0.2s ease;
+}
+
+/* 本文は少し広め */
+.new-blog textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* フォーカス時 */
+.new-blog input:focus,
+.new-blog textarea:focus,
+.new-blog select:focus {
+  outline: none;
+  border-color: #f1c08f;      /* Terraceオレンジ */
+  background: #fffdfa;
+}
+
+/* 日付セレクトの整列 */
+.new-blog .time select {
+  margin-right: 6px;
+}
+
+/* 画像 */
+.new-blog input[type="file"] {
+  font-size: 13px;
+}
+
+/* 投稿ボタン */
+.new-blog .submit input[type="submit"] {
+  margin-top: 10px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0,0,0,0.08);
+  padding: 10px 28px;
+  border-radius: 28px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+/* ボタン hover */
+.new-blog .submit input[type="submit"]:hover {
+  background: #F6F4EE;
+  transform: translateY(-1px);
+}
+
+.new-blog a {
+  display: inline-block;
+  margin-top: 28px;
+  font-size: 14px;
+  color: #007aff;
+  text-decoration: none;
+}
+
+.new-blog a:hover {
+  text-decoration: underline;
+}

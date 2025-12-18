@@ -2,7 +2,7 @@
   <ul>
     <% @group.users.each do |member| %>
       <li>
-        <%= image_tag member.image, size: "40x40", class: "member-icon" if member.image.attached? %>
+        
         <%= member.profile %>
       </li>
     <% end %>

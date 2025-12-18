@@ -1,0 +1,138 @@
+.group-new-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;       /* ← 余白を広げて見切れ防止 */
+  box-sizing: border-box;/* ← 必須！！ */
+  z-index: 10;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  
+}
+
+.group-new-header h1 a {
+    text-decoration: none;
+    color: #444;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.group-new-header ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.group-new-header a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.group-new-header a:hover {
+    color: #d2691e;
+}
+
+.group-new-container {
+  min-height: calc(100vh - 80px);      
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #FFF8F2;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* ▼ カード（タイトル） */
+.group-new-card {
+  margin-bottom: 20px;
+}
+
+.group-new-card h2 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #4f6457;
+  text-align: center;
+}
+
+/* ▼ フォーム本体 */
+.group-new-form {
+  width: 100%;
+  max-width: 360px;
+  padding: 24px 28px;
+
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-sizing: border-box;
+}
+
+/* ▼ 各入力ブロック */
+.group-new-form .group-new-form-name {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ▼ ラベル */
+.group-new-form .group-new-form-name label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #4f6457;
+}
+
+/* ▼ 入力欄 */
+.group-new-form .group-new-form-name input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+/* ▼ フォーカス時 */
+.group-new-form .group-new-form-name input:focus {
+  outline: none;
+  border-color: #d9b44a;
+}
+
+/* ▼ ボタン */
+.group-new-form input[type="submit"],
+.group-new-form .btn.btn-primary {
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px 0;
+
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 24px;
+
+  color: #4f6457;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+/* ▼ ホバー */
+.group-new-form input[type="submit"]:hover,
+.group-new-form .btn.btn-primary:hover {
+  background: #f6f4ee;
+}

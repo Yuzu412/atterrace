@@ -7,26 +7,16 @@ class TweetsController < ApplicationController
     @tweet = @group.tweets.new
   end
 
-  def create
-    @tweet = @group.tweets.new(tweet_params)
-    @tweet.user = current_user
+def create
+  @tweet = @group.tweets.new(tweet_params)
+  @tweet.user = current_user
 
-    if @tweet.save
-      redirect_to group_path(@group)
-    else
-      render :new, status: :unprocessable_entity  # ← ここが超大事！
-    end
-    @like = Like.new(
-      user_id: current_user.id,
-      tweet_id: @tweet.id
-    )
-   
-    @like.save
-
-
-    # 押したら元のページ（ツイート詳細ページや一覧ページ）に戻る
-    redirect_back(fallback_location: root_path)
+  if @tweet.save
+    redirect_to group_path(@group)  # ← 1回だけ
+  else
+    render :new, status: :unprocessable_entity
   end
+end
 
   def show
     @tweet = Tweet.find(params[:id])

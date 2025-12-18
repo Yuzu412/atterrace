@@ -1,4 +1,21 @@
-<h2>プロフィール編集 </h2>
+<div class=users-edit-header>
+      <h1><%= link_to "@Terrace", hello_index_path %></h1>
+      <div class="header-list">
+      <ul>
+        <li><nav><a href="#second-block">@Terraceとは</a></nav></li>
+        <li><nav><a href="#third-block">@Terraceの機能</a></nav></li>
+        <li><%= link_to "ログイン", new_user_session_path %></li>
+        <li><%= link_to "はじめる", new_user_registration_path %></li>
+      </ul>
+      </div>
+</div>
+
+<div class="users-edit-container">
+  <div class="users-edit-card">
+    <h2>プロフィール編集 </h2>
+  </div>
+
+  <div class="users-edit-form">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
@@ -8,9 +25,10 @@
         <%= f.file_field :image %>
       </div>
 
+
   <div class="field">
     <%= f.label :ニックネーム %><br />
-    <%= f.text_area :profile, autofocus: true %>
+    <%= f.text_field :profile, autofocus: true %>
   </div>
 
   <div class="field">
@@ -23,11 +41,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :パスワード %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.label :パスワード %> <i>(変更したくない場合は空欄のままにしてください。)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <em><%= @minimum_password_length %> 文字以上</em>
     <% end %>
   </div>
 
@@ -37,7 +55,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :現在のパスワード %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.label :現在のパスワード %> <i>(変更を確定するには、現在のパスワードが必要です。)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
@@ -46,8 +64,11 @@
   </div>
 <% end %>
 
-<h3>アカウントを消去する</h3>
 
-<div> <%= button_to "アカウントを消去", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
+
+<br><div> <%= button_to "アカウントを消去", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
+
 
 <%= link_to "戻る", :back %>
+</div>
+</div>

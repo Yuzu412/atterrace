@@ -10,9 +10,11 @@
             <%= link_to group_path(list) do %>
               <%= list.name %> (<%= list.user_ids.count %>)
             <% end %>
-            <%= link_to '編集', edit_group_path(list.id), method: :get %>
-            <%= link_to '削除', "/groups/#{list.id}", method: :delete %>
-            <%= link_to '招待', invitation_link_group_path(list), method: :get, class: "btn btn-info btn-sm" %>　#ここ追加
+            <div class="group-list-actions">
+              <%= link_to '編集', edit_group_path(list.id) %>
+              <%= link_to '削除', group_path(list.id), method: :delete %>
+              <%= link_to '招待', invitation_link_group_path(list), class: "btn btn-info btn-sm" %>
+            </div>
           </li>
         <% end %>
       <% end %>

@@ -73,22 +73,23 @@
 }
 
 /* ▼ ドロップダウンの中身 */
-.dropdown-content {
+.header-list .dropdown-content {
   position: absolute;
   top: 100%; /* summaryの下に配置 */
-  left: 0;
-  background-color: #fff;
-  min-width: 200px;
-  margin-top: 8px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  padding: 12px 0;
-  z-index: 100;
-  opacity: 0;
-  transform: translateY(-5px);
-  pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  right: 0;
+  margin-top: 12px;          /* summaryとの距離 */
+  padding: 18px 20px;        /* ← ここが一番重要 */
+
+  min-width: 260px;
+
+  background: #ffffff; /* または rgb(255,255,255) */
+
+
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
 }
+
+
 
 /* ▼ detailsが開いたときに見せる */
 .dropdown[open] .dropdown-content,
@@ -98,14 +99,3 @@ details[open] > .dropdown-content {
   pointer-events: auto;
 }
 
-/* ▼ 中身のリスト要素を想定（部分テンプレートがul/liなら） */
-.dropdown-content li {
-  padding: 10px 16px;
-  color: #333;
-  font-size: 14px;
-  transition: background-color 0.2s ease;
-}
-
-.dropdown-content li:hover {
-  background-color: #f9f9f9;
-}

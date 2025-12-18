@@ -1,12 +1,17 @@
-<body>
-    <header>
+<%= stylesheet_link_tag "users_sign_in", "data-turbo-track": "reload" %>
+
+<body class="login-page">
+    <div class="login-header">
       <h1><%= link_to "@Terrace", hello_index_path %></h1>
       <div class="header-list">
       <ul>
+        <li><nav><a href="#second-block">@Terraceとは</a></nav></li>
+        <li><nav><a href="#third-block">@Terraceの機能</a></nav></li>
         <li><%= link_to "はじめる", new_user_registration_path %></li>
       </ul>
       </div>
-    </header>
+    </div>
+
   
 <div class="login-container">
   <div class="login-card">

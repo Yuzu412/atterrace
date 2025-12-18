@@ -1,0 +1,82 @@
+/* ▼ 一覧全体 */
+.group-list {
+  display: flex;
+  flex-direction: column; /* ← グループ単位で縦 */
+  gap: 12px;
+  background: white;
+}
+
+/* ▼ ul */
+.group-list-table {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ▼ 各グループ行（背景なし） */
+.group-list-table-each-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;                 /* 間隔狭く */
+  padding: 8px 0;           /* 余白最小 */
+  background: transparent;  /* 背景なし */
+}
+
+/* ▼ グループ名 */
+.group-list-table-each-group > a {
+  font-size: 0.9rem;        /* 小さめ */
+  font-weight: 600;
+  color: #2f2f2f;
+  text-decoration: none;
+}
+
+/* ▼ 操作ボタン */
+.group-list-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* ▼ 編集・削除・追加 */
+.group-list-actions a {
+  border-radius: 16px;
+  font-size: 0.75rem;       /* さらに小さく */
+  padding: 4px 10px;
+  text-decoration: none;
+  color: #4f6457;
+
+  background: rgba(255,255,255,0.6);
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+/* ▼ hover */
+.group-list-actions a:hover {
+  background: #f6f4ee;
+}
+
+/* ▼ 新規作成エリア */
+.group-new {
+  margin-top: 16px;
+  text-align: left;
+}
+
+/* ▼ 新規作成ボタン（指定どおり） */
+.group-new-link {
+  font-size: 14px;
+  border-radius: 16px; 
+  display: inline-block;
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  background: rgba(255,255,255,0.6);
+  border: 1px solid rgba(0,0,0,0.1);
+  color: #4f6457;
+  text-decoration: none;
+}
+
+.group-new-link:hover {
+  background: #f6f4ee;
+}

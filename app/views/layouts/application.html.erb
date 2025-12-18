@@ -30,7 +30,7 @@
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-  <body>
+  
   <div class="app-container">
     <!-- ヘッダー -->
     <% if controller_name == "tweets" || controller_name == "blogs" || (controller_name == "groups" && action_name != "new")  %>
@@ -72,3 +72,28 @@
   </div>
 </body>
 </html>
+
+<script>
+  document.addEventListener("turbo:load", () => {
+    const detailsElements = document.querySelectorAll(".dropdown details");
+
+    // 外をクリックしたら全部閉じる
+    document.addEventListener("click", (e) => {
+      detailsElements.forEach((details) => {
+        if (!details.contains(e.target)) {
+          details.removeAttribute("open");
+        }
+      });
+    });
+
+    // summary をクリックしたときは他を閉じる
+    detailsElements.forEach((details) => {
+      const summary = details.querySelector("summary");
+      summary.addEventListener("click", (e) => {
+        detailsElements.forEach((d) => {
+          if (d !== details) d.removeAttribute("open");
+        });
+      });
+    });
+  });
+</script>

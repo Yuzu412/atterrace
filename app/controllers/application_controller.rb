@@ -22,4 +22,10 @@ class ApplicationController < ActionController::Base
   def after_update_path_for(resource)
     session.delete(:return_to) || root_path
   end
+
+    def after_update_path_for(resource)
+    # 編集ページに来る直前のURL（group_showなど）に戻す
+    request.referer || root_path
+  end
+  
 end

@@ -5,6 +5,7 @@
   gap: 20px; /* 画像間隔を広げる */
   justify-items: center;
   padding: 20px;
+  margin: 20px;
 }
 
 /* 個々の投稿 */

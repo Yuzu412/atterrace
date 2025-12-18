@@ -1,3 +1,6 @@
+<div class="new-blog">
+  <h3>新規投稿</h3>
+
 <%= form_with(model: [@group, @blog], local: true) do |form| %>
   <div class="title">
     <%= form.label :title, "タイトル" %>
@@ -6,7 +9,12 @@
 
   <div class="time">
     <%= form.label :start_time, "日付" %>
-    <%= form.datetime_select :start_time %>
+    <%= form.date_select :start_time,
+          use_month_numbers: true,
+          start_year: 2015,
+          end_year: Time.current.year,
+          discard_hour: true,
+          discard_minute: true %>
   </div>
 
   <div class="content">
@@ -14,12 +22,41 @@
     <%= form.text_area :content %>
   </div>
 
-  <div class="image">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-  </div>
+<div class="field image">
+  <%= form.file_field :image,
+        id: "blog-file-upload",
+        style: "display: none;" %>
+
+  <%= form.label :image, "写真を追加",
+        class: "add-photo-button",
+        for: "blog-file-upload" %>
+
+  <p id="blog-selected-file" class="file-status"></p>
+</div>
+ 
 
   <div class="submit">
     <%= form.submit "投稿する" %>
   </div>
 <% end %>
+
+<%= link_to '一覧に戻る', season_group_blogs_path(@group, season: "spring") if @group&.persisted? %>
+
+</div>
+
+<script>
+  document.addEventListener("turbo:load", () => {
+    const input = document.getElementById("blog-file-upload");
+    const status = document.getElementById("blog-selected-file");
+
+    if (!input || !status) return;
+
+    input.addEventListener("change", () => {
+      if (input.files.length === 0) {
+        status.textContent = "";
+      } else {
+        status.textContent = "写真を選択しました";
+      }
+    });
+  });
+</script>

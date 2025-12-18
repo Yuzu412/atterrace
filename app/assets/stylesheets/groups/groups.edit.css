@@ -1,0 +1,9 @@
+.group-edit-form {
+  display: flex;
+  justify-content: center; /* 横中央 */
+  align-items: center;     /* 縦中央 */
+  min-height: 100vh;       /* 画面の高さいっぱい */
+  background-color: #ffffff; /* お好みで背景色 */
+  box-sizing: border-box;
+  padding: 20px;
+}

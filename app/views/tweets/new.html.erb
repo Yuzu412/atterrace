@@ -1,4 +1,5 @@
-<h3>新規投稿</h3>
+<div class="new-tweet">
+  <h3>新規投稿</h3>
 
 <%= form_with(model: [@group, @tweet], local: true, html: { id: 'upload-form' }) do |f| %>
 
@@ -28,9 +29,31 @@
     <%= f.label :images, "写真を追加",
           class: "add-photo-button",
           for: 'file-upload-input' %>
-  </div>
+    <!-- ★ 追加 -->
+  <p id="selected-files" class="file-status"></p>
+</div>
 
-  <%= f.submit "OK" %>
+  <%= f.submit "投稿する" %>
 <% end %>
 
 <%= link_to "一覧に戻る", group_path(@group) %>
+
+<script>
+  document.addEventListener("turbo:load", () => {
+    const input = document.getElementById("file-upload-input");
+    const status = document.getElementById("selected-files");
+
+    if (!input || !status) return;
+
+    input.addEventListener("change", () => {
+      if (input.files.length === 0) {
+        status.textContent = "";
+      } else if (input.files.length === 1) {
+        status.textContent = "写真を1枚選択しました";
+      } else {
+        status.textContent = `写真を${input.files.length}枚選択しました`;
+      }
+    });
+  });
+</script>
+</div>

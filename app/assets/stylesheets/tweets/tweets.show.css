@@ -1,6 +1,6 @@
 /* ▼ 全体（tweet-show） */
 .tweet-show {
-  margin-bottom: 24px;
+  margin: 30px;
 }
 
 /* ▼ 画像をインスタみたいに大きく＆中央揃え */
@@ -44,25 +44,86 @@
   font-size: 14px;
 }
 
-/* ▼ 編集・削除ボタン（下線だけの超シンプル） */
-.tweet-show a {
+
+.tweet-actions {
+  display: flex;
+  gap: 5px;        /* ボタンの間隔 */
+  margin-top: 12px;
+  align-items: center; /* ← 高さ揃える */
+}
+
+/* ▼ 編集・削除ボタンのフォームも横並びに揃える */
+.tweet-show form {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+/* ▼ 白ベースのふわっとした付箋風ボタン */
+.tweet-show .action-button {
   margin-right: 14px;
+  padding: 8px 16px;
   font-size: 14px;
-  color: #007aff;
+
+  background: #ffffff;              /* ← 白！シンプル */
+  border: 1px solid #e6e6e6;        /* ← ほんのりグレー枠 */
+  color: #4f4f4f;                   /* ← 濃すぎない文字色 */
+  border-radius: 20px;
+
+  display: inline-block;
+  line-height: 1.4;                 /* ← 上下中央に見えるポイント！ */
+  font-weight: 600;
   text-decoration: none;
-  border-bottom: 1px solid transparent;
-  padding-bottom: 2px;
+
   transition: 0.2s ease;
 }
 
-.tweet-show a:hover {
-  border-bottom: 1px solid #007aff;
+/* hoverでふわっと浮く */
+.tweet-show .action-button:hover {
+  background: #f8f8f8;
+  transform: translateY(-1px);
 }
 
+
 /* コメント全体 */
+/* Tweet本文の吹き出し */
+.tweet-bubble {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 20px 0;
+  max-width: 85%;
+}
+
+/* アイコン */
+.tweet-bubble .user-profile img {
+  border-radius: 50%;
+}
+
+/* ユーザー名（上に小さく） */
+.tweet-bubble .user-profile {
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  text-align: center;
+}
+
+/* 吹き出し本体 */
+.tweet-text {
+  background: #ffffff;
+  border: 1px solid #eee;
+  padding: 14px 18px;
+  border-radius: 16px;
+  font-size: 16px;
+  line-height: 1.6;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.08);
+  max-width: 420px;
+}
+
 .comment-wrapper {
   margin-top: 30px;
   padding: 0 10px;
+  margin: 30px;
 }
 
 /* コメントバルーン共通 */
@@ -125,8 +186,8 @@
 }
 
 .comment-bubble.mine .comment-text {
-  background: #C7F7C1; /* 淡いLINE緑 */
-  border: 1px solid #B3E6AE;
+  background: #F6F4EE; /* 淡いLINE緑 */
+  border: 1px solid #e7dcbb;
 }
 
 /* 入力欄（下） */
@@ -144,10 +205,35 @@
   margin-bottom: 10px;
 }
 
+.comment-form .action-button {
+  margin-right: 14px;
+  padding: 8px 16px;
+  font-size: 14px;
+
+  background: #ffffff;              /* ← 白！シンプル */
+  border: 1px solid #e6e6e6;        /* ← ほんのりグレー枠 */
+  color: #4f4f4f;                   /* ← 濃すぎない文字色 */
+  border-radius: 20px;
+
+  display: inline-block;
+  line-height: 1.4;                 /* ← 上下中央に見えるポイント！ */
+  font-weight: 600;
+  text-decoration: none;
+
+  transition: 0.2s ease;
+}
+
+/* hoverでふわっと浮く */
+.comment-form .action-button:hover {
+  background: #f8f8f8;
+  transform: translateY(-1px);
+}
+
+
 /* ▼ 戻るリンク（シンプル） */
 .tweet-back {
   display: inline-block;
-  margin-top: 30px;
+  margin-top: 28px;
   color: #007aff;
   font-size: 14px;
   text-decoration: none;

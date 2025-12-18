@@ -1,26 +1,17 @@
+<div class="blog-show">
+  
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>タイトル</strong>
+<p class="blog-title">
   <%= @blog.title %>
 </p>
 
-<p>
-  <strong>時間</strong>
-  <%= @blog.start_time.strftime("%Y-%m-%d %H:%M") %>
-</p>
 
-<p>
-  <strong>内容</strong>
-  <%= @blog.content %>
-</p>
-
-<p>
-  <strong>写真</strong>
-  <% if @blog.image.attached? %>
-    <%= image_tag @blog.image, size: '250x200'%>
-  <% end %>
-</p>
+<div class="blog-show-images">
+<% if @blog.image.attached? %>
+    <%= image_tag @blog.image, class: "show-image" %>
+<% end %>
+</div>
 
 <% if user_signed_in? %>
   <%= button_to group_blog_likes_path(@group, @blog), method: :post do %>
@@ -30,31 +21,55 @@
   <i class="fas fa-heart" style="color: red;"></i> <%= @blog.likes.count %>
 <% end %>
 
-  <div class="comment-wrapper">
-  <p>コメント一覧</p>
-  <% @comments.each do |c| %>
-    <div>
-      <%= c.user.profile unless c.user.blank? %>
-      <br>
-      <%= c.content %>
+<p class="created-time"><%= @blog.start_time.strftime("%Y-%m-%d") %></p>
+<p>
+  <%= @blog.content %>
+</p>
+<div class="blog-actions">
+  <%= link_to '編集する', edit_group_blog_path(@group, @blog), class: "action-button" %>
+  <%= button_to "削除する", group_blog_path(@group, @blog),
+      method: :delete,
+      class: "action-button",
+      data: { confirm: "本当に削除しますか？" } %>
+</div>
+</div>
+
+<div class="comment-wrapper">
+<% @comments.each do |c| %>
+    <% mine = (c.user == current_user) %>
+
+    <div class="comment-bubble <%= mine ? "mine" : "theirs" %>">
+      <div class="comment-icon">
+        <% if c.user.image.attached? %>
+          <%= image_tag c.user.image, size: '40x40' %>
+        <% else %>
+          <div class="icon-placeholder"></div>
+        <% end %>
+      </div>
+
+      <div class="comment-body">
+        <div class="comment-name"><%= c.user.profile %></div>
+        <div class="comment-text"><%= c.content %></div>
+      </div>
     </div>
-    <br>
   <% end %>
 
   <% if user_signed_in? %>
-  <% @comment ||= Comment.new %>
+    <% @comment ||= Comment.new %>
 
-    <%= form_with(model: [@group, @blog, @comment], local: true) do |f| %>
-      <%= f.text_area :content %>
-      <%= button_tag type: "submit" do %>
-        <i class="far fa-comments"></i> コメントする
+    <div class="comment-form">
+      <%= form_with(model: [@group, @blog, @comment], local: true) do |f| %>
+        <%= f.text_area :content, class: "comment-input" %>
+        <%= button_tag type: "submit", class: "action-button" do %>
+          コメントする
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   <% end %>
+
+  <%= link_to 'アノコロページに戻る', season_group_blogs_path(@group, season: "spring") if @group&.persisted? %>
 </div>
 
-<%= link_to 'Edit', edit_group_blog_path(@group, @blog) %> |
-<%= link_to 'Back', season_group_blogs_path(@group, season: "spring") if @group&.persisted? %>
-<%= button_to "削除する", group_blog_path(@group, @blog),
-      method: :delete,
-      data: { confirm: "本当に削除しますか？" } %>
+
+
+

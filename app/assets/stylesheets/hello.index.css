@@ -257,3 +257,101 @@ footer{
   height: 50px;
   background-color: #ede1bc;
 }
+
+/* =========================
+   スマホ用（480px以下）
+========================= */
+@media screen and (max-width: 480px) {
+
+  /* ▼ ヘッダー */
+  .hello-header {
+    height: 64px;
+    padding: 0 16px;
+  }
+
+  .hello-header h1 a {
+    font-size: 18px;
+  }
+
+  .hello-header ul {
+    gap: 12px;
+  }
+
+  .hello-header a {
+    font-size: 14px;
+  }
+
+  /* ▼ ファーストブロック */
+  .title-container {
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: normal;
+    width: 90%;
+  }
+
+  .title-container h1 {
+    font-size: 22px;
+    line-height: 1.4;
+  }
+
+  .title-container h3 {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* ▼ second-block */
+  #second-block {
+    padding: 80px 20px;
+  }
+
+  #second-block h3 {
+    font-size: 22px;
+    margin-bottom: 40px;
+  }
+
+  .about-container p {
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+  }
+
+  /* ▼ third-block */
+  #third-block {
+    padding: 80px 0;
+  }
+
+  #third-block h3 {
+    font-size: 22px;
+    margin-bottom: 40px;
+  }
+
+  /* ▼ 機能カード */
+  .function-container {
+    width: 92%;
+    gap: 60px;
+  }
+
+  .function {
+    padding: 24px 20px;
+    gap: 24px;
+  }
+
+  .function-name {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .function-name span {
+    font-size: 18px;
+  }
+
+  .function-image {
+    width: 100%;
+  }
+
+  /* ▼ フッター */
+  footer {
+    height: 40px;
+  }
+}

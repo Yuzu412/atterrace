@@ -1,27 +1,60 @@
-<%= form_with(model: [@group, @blog], local: true) do |form| %>
+<div class="edit-blog">
+  <h3>投稿を編集</h3>
 
-  <div class="title">
-    <%= form.label :title, "タイトル" %>
-    <%= form.text_field :title %>
-  </div>
+  <%= form_with(model: [@group, @blog], local: true, html: { id: "edit-blog-form" }) do |form| %>
+    <div class="title">
+      <%= form.label :title, "タイトル" %>
+      <%= form.text_field :title %>
+    </div>
 
-  <div class="time">
-    <%= form.label :start_time, "時間" %>
-    <%= form.datetime_select :start_time %>
-  </div>
+    <div class="time">
+      <%= form.label :start_time, "日付" %>
+      <%= form.date_select :start_time,
+            use_month_numbers: true,
+            start_year: 2015,
+            end_year: Time.current.year,
+            discard_hour: true,
+            discard_minute: true %>
+    </div>
 
-  <div class="content">
-    <%= form.label :content, "内容" %>
-    <%= form.text_area :content %>
-  </div>
-  
-  <div class="image">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-  </div>
+    <div class="content">
+      <%= form.label :content, "本文" %>
+      <%= form.text_area :content %>
+    </div>
 
-  <div class="submit">
-    <%= form.submit "更新する" %>
-  </div>
+    <div class="field image">
+      <%= form.file_field :image,
+            id: "edit-blog-file-upload",
+            style: "display: none;" %>
 
-<% end %>
+      <%= form.label :image, "写真を追加",
+            class: "add-photo-button",
+            for: "edit-blog-file-upload" %>
+
+      <p id="edit-blog-selected-file" class="file-status"></p>
+    </div>
+
+    <div class="submit">
+      <%= form.submit "更新する" %>
+    </div>
+  <% end %>
+
+  <%= link_to '一覧に戻る', season_group_blogs_path(@group, season: "spring") if @group&.persisted? %>
+</div>
+
+<script>
+  document.addEventListener("turbo:load", () => {
+    const input = document.getElementById("edit-blog-file-upload");
+    const status = document.getElementById("edit-blog-selected-file");
+
+    if (!input || !status) return;
+
+    input.addEventListener("change", () => {
+      if (input.files.length === 0) {
+        status.textContent = "";
+      } else {
+        status.textContent = "写真を選択しました";
+      }
+    });
+  });
+</script>

@@ -90,7 +90,9 @@ class BlogsController < ApplicationController
       else []
       end
 
-    @blogs = @group.blogs.select { |b| months.include?(b.created_at.month) }
+    @blogs = @group.blogs.select do |b|
+      b.start_time.present? && months.include?(b.start_time.month)
+    end
 
     # 左右矢印用
     idx = SEASONS.index(season)

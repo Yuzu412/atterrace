@@ -42,3 +42,42 @@
 .tweet:hover img {
   transform: translate(-50%, -50%) scale(1.05);
 }
+
+@media screen and (max-width: 480px) {
+
+  /* 投稿一覧コンテナ */
+  .tweets-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3列に */
+    gap: 10px; /* 画像間隔を少し狭め */
+    justify-items: center;
+    padding: 10px;
+    margin: 10px;
+  }
+
+  /* 個々の投稿 */
+  .tweet {
+    width: 100%;
+    padding-top: 100%; /* 正方形を維持 */
+    border-radius: 12px; /* 少し小さめ */
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+  }
+
+  /* 画像 */
+  .tweet img {
+    width: auto;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+  }
+
+  /* ホバーの縮小 */
+  .tweet:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+  }
+
+  .tweet:hover img {
+    transform: translate(-50%, -50%) scale(1.03);
+  }
+}

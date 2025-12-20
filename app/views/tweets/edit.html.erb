@@ -1,5 +1,14 @@
-<%= form_for [@group, @tweet] do |f| %>
-  <%= f.label :キャプション %>
-  <%= f.text_field :body, :size => 140 %> 
-  <%= f.submit "編集する" %>
-<% end %>
+<div class="edit-tweet">
+  <h3>投稿を編集</h3>
+
+  <%= form_for [@group, @tweet], html: { id: "edit-form" } do |f| %>
+    <div class="field">
+      <%= f.label :キャプション %>
+      <%= f.text_field :body, size: 140 %>
+    </div>
+
+    <%= f.submit "変更を保存" %>
+  <% end %>
+
+  <%= link_to "一覧に戻る", group_path(@group) %>
+</div>

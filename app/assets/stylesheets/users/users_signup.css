@@ -51,13 +51,16 @@ html, body {
 
 /* ▼ ログイン全体（ヘッダー分を避ける） */
 .signup-container {
-  min-height: calc(100vh - 80px);      
+  min-height: 100vh;
+  padding: 80px 16px 16px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
   background-color: #FFF8F2;
+  box-sizing: border-box;
 }
 
 /* ▼ カード（タイトル） */
@@ -172,4 +175,98 @@ html, body {
 
 .signup-form a:hover {
   text-decoration: underline;
+}
+
+/* =========================
+   signup画面 スマホ最終（login準拠）
+========================= */
+@media screen and (max-width: 480px) {
+
+  /* ===== 全体フォント ===== */
+  body,
+  .signup-container,
+  .signup-form {
+    font-family: "Zen Kaku Gothic New",
+                 "Hiragino Kaku Gothic ProN",
+                 "Noto Sans JP",
+                 sans-serif !important;
+  }
+
+  /* ===== ヘッダー ===== */
+  .signup-header {
+    height: 48px;
+    padding: 0 16px;
+  }
+
+  .signup-header h1 a {
+    font-size: 13px;   /* loginと一致 */
+    font-weight: 500;
+  }
+
+  .signup-header a {
+    font-size: 8px;    /* loginと一致 */
+    font-weight: 400;
+  }
+
+  .signup-header ul {
+    gap: 10px;
+  }
+
+  /* ===== signup全体 ===== */
+  .signup-container {
+    min-height: 100vh;
+    padding: 48px 16px 16px;
+    box-sizing: border-box;
+  }
+
+  /* ===== タイトル ===== */
+  .signup-card h2 {
+    font-size: 14px;   /* login-card h2 と一致 */
+    font-weight: 600;
+  }
+
+  /* ===== フォームカード ===== */
+  .signup-form {
+    max-width: 300px;
+    padding: 20px 18px;
+    border-radius: 14px;
+  }
+
+  /* ===== ラベル ===== */
+  .signup-form h2 {
+    font-size: 10px!important;  /* loginと一致 */
+    margin-bottom: 4px;
+    font-weight: 600!important;
+  }
+
+  /* 補足テキスト（password説明） */
+  .signup-form em {
+    font-size: 9px;    /* loginの補足と同格 */
+    margin-top: 4px;
+  }
+
+  /* ===== 入力欄 ===== */
+  .signup-form input[type="text"],
+  .signup-form input[type="email"],
+  .signup-form input[type="password"] {
+    padding: 8px 10px;
+    font-size: 10px;   /* loginと完全一致 */
+    border-radius: 8px;
+  }
+
+  /* ===== 登録ボタン ===== */
+  .signup-form input[type="submit"] {
+    margin-top: 10px;
+    padding: 10px 0;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    border-radius: 20px;
+  }
+
+  /* ===== 下のリンク ===== */
+  .signup-form a {
+    margin-top: 12px;
+    font-size: 10px;
+  }
 }

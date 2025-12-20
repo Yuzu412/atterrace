@@ -1,5 +1,12 @@
 <header class="main-header">
+    <div class="header-left">
+    <button class="hamburger" aria-label="メニュー">
+        <span></span>
+        <span></span>
+        <span></span>
+        </button>
     <h1><%= link_to "@Terrace", hello_index_path %></h1>
+    </div>
     <div class="header-list">
         <ul>
             <% if user_signed_in? %>

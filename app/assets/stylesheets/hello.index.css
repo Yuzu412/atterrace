@@ -34,6 +34,7 @@ html, body {
 
 .hello-header ul {
     display: flex;
+    align-items: center;
     gap: 20px;
     list-style: none;
     margin: 0;
@@ -41,6 +42,8 @@ html, body {
 }
 
 .hello-header a {
+    display: flex;
+    align-items: center;
     text-decoration: none;
     color: #555;
     font-weight: 500;
@@ -258,30 +261,46 @@ footer{
   background-color: #ede1bc;
 }
 
+
 /* =========================
-   スマホ用（480px以下）
+   スマホ微調整（480px以下）
 ========================= */
 @media screen and (max-width: 480px) {
 
-  /* ▼ ヘッダー */
-  .hello-header {
-    height: 64px;
+  /* ===== 全体フォント（明朝→やさしいゴシック） ===== */
+  body,
+  .title-container,
+  #second-block,
+  #third-block,
+  .function-name {
+    font-family: "Zen Kaku Gothic New", 
+                 "Hiragino Kaku Gothic ProN",
+                 "Noto Sans JP",
+                 sans-serif !important;
+  }
+
+    .hello-header {
+    height: 48px;
     padding: 0 16px;
   }
 
+    /* ロゴ（左側） */
   .hello-header h1 a {
-    font-size: 18px;
+    font-size: 13px !important;
+    font-weight: 500;
+  }
+
+  /* ナビリンク（右側） */
+  .hello-header a {
+    font-size: 8px !important;
+    font-weight: 400;
   }
 
   .hello-header ul {
-    gap: 12px;
+    gap: 10px;
   }
 
-  .hello-header a {
-    font-size: 14px;
-  }
 
-  /* ▼ ファーストブロック */
   .title-container {
     top: 55%;
     left: 50%;
@@ -291,64 +310,60 @@ footer{
   }
 
   .title-container h1 {
-    font-size: 22px;
-    line-height: 1.4;
+    font-size: 16px !important;
+    line-height: 1.25;
+    font-weight: 500;
   }
 
   .title-container h3 {
-    font-size: 14px;
+    font-size: 11px !important;
+    line-height: 1.4;
+  }
+
+  /* ===== セクションタイトル ===== */
+  #second-block h3,
+  #third-block h3 {
+    font-size: 16px !important;
+    margin-bottom: 28px;
+    font-weight: 600;
+  }
+
+
+  
+
+   .about-container p,
+  .function-name {
+    font-size: 10px !important;
     line-height: 1.6;
   }
 
-  /* ▼ second-block */
-  #second-block {
-    padding: 80px 20px;
-  }
-
-  #second-block h3 {
-    font-size: 22px;
-    margin-bottom: 40px;
-  }
-
-  .about-container p {
-    font-size: 15px;
-    line-height: 1.8;
-    margin-bottom: 40px;
-  }
-
-  /* ▼ third-block */
-  #third-block {
-    padding: 80px 0;
-  }
-
-  #third-block h3 {
-    font-size: 22px;
-    margin-bottom: 40px;
-  }
-
-  /* ▼ 機能カード */
   .function-container {
-    width: 92%;
-    gap: 60px;
+    width: 86%;
+    gap: 40px;
   }
 
   .function {
-    padding: 24px 20px;
-    gap: 24px;
-  }
-
-  .function-name {
-    font-size: 15px;
-    line-height: 1.8;
+    padding: 18px 16px;
+    border-radius: 14px;
   }
 
   .function-name span {
-    font-size: 18px;
+    font-size: 14px !important;
   }
 
   .function-image {
-    width: 100%;
+    border-radius: 10px;
   }
+
+  /* ===== セクション余白（さらに詰める） ===== */
+  #second-block {
+    padding: 56px 16px;
+  }
+
+  #third-block {
+    padding: 56px 0;
+  }
+
 
   /* ▼ フッター */
   footer {

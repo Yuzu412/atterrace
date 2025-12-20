@@ -1,0 +1,119 @@
+/* ===== 編集投稿（Blog）全体 ===== */
+.edit-blog {
+  max-width: 640px;
+  margin: 30px;
+  padding: 40px 20px;
+}
+
+/* 見出し */
+.edit-blog h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 28px;
+  color: #3a3a3a;
+}
+
+/* 各入力ブロック */
+.edit-blog .title,
+.edit-blog .time,
+.edit-blog .content,
+.edit-blog .image {
+  margin-bottom: 22px;
+}
+
+/* ラベル */
+.edit-blog label {
+  display: block;
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+/* テキスト入力・textarea・select */
+.edit-blog input[type="text"],
+.edit-blog textarea,
+.edit-blog select {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 1px solid #e5e5e5;
+  background: #fff;
+  transition: 0.2s ease;
+}
+
+.edit-blog textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* フォーカス */
+.edit-blog input:focus,
+.edit-blog textarea:focus,
+.edit-blog select:focus {
+  outline: none;
+  border-color: #f1c08f;
+  background: #fffdfa;
+}
+
+/* 日付セレクト整列 */
+.edit-blog .time select {
+  margin-right: 6px;
+}
+
+/* 画像追加ボタン */
+.edit-blog .add-photo-button {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(0,0,0,0.08);
+  color: #333;
+  transition: 0.25s ease;
+}
+
+.edit-blog .add-photo-button:hover {
+  background: #f6f4ee;
+  transform: translateY(-2px);
+}
+
+/* ファイル選択状況 */
+.edit-blog .file-status {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #777;
+}
+
+/* 投稿ボタン */
+.edit-blog .submit input[type="submit"] {
+  margin-top: 10px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0,0,0,0.08);
+  padding: 10px 28px;
+  border-radius: 28px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.edit-blog .submit input[type="submit"]:hover {
+  background: #F6F4EE;
+  transform: translateY(-1px);
+}
+
+/* 一覧に戻るリンク */
+.edit-blog a {
+  display: inline-block;
+  margin-top: 28px;
+  font-size: 14px;
+  color: #007aff;
+  text-decoration: none;
+}
+
+.edit-blog a:hover {
+  text-decoration: underline;
+}

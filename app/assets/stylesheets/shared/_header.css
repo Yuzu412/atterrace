@@ -13,6 +13,14 @@
   background: white;
 }
 
+/* 左側をひとかたまりに */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* ← ここで距離を調整 */
+}
+
+
 /* ▼ 文字だけ固定 */
 .main-header h1 a {
   position: relative;  /* スクロール時も固定 */
@@ -97,5 +105,108 @@ details[open] > .dropdown-content {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+}
+
+/* ハンバーガー */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  margin: 5px 0;
+  background-color: #4f6457;
+  transition: 0.3s;
+}
+
+/* スマホだけ表示 */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .main-header {
+    height: 80px !important;
+    padding: 0 16px;          /* ← スマホ用に縮める */
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+  }
+}
+
+/* =========================
+   スマホ版ヘッダー調整（480px以下）
+========================= */
+@media screen and (max-width: 480px) {
+
+  /* ===== ヘッダー全体 ===== */
+  .main-header {
+    display: flex;
+    align-items: center;
+    height: 48px !important;       /* ヘッダー高さを小さく */
+    padding: 0 12px !important;    /* 左右余白を縮小 */
+    justify-content: space-between;
+  }
+
+  /* ===== 左側のロゴと文字 ===== */
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 4px;                      /* アイコンと文字の間隔を狭く */
+  }
+
+  .main-header h1 a {
+    display: flex;
+    align-items: center;
+    font-size: 14px !important;    /* ロゴ/サイト名の文字を小さく */
+    font-weight: 500;
+  }
+
+  /* ===== ナビリンク ===== */
+  .main-header ul {
+    display: flex;
+    align-items: center;
+    gap: 6px !important;           /* リンク間の隙間を縮める */
+  }
+
+  .main-header a {
+    display: flex;
+    align-items: center;
+    font-size: 8px !important;    /* リンク文字サイズ */
+    font-weight: 400;
+  }
+
+  /* ===== ドロップダウン ===== */
+  .dropdown summary {
+    font-size: 12px !important;
+    padding: 8px 12px !important;
+  }
+
+  .header-list .dropdown-content {
+    min-width: 200px !important;   /* 幅をスマホ向けに縮小 */
+    padding: 12px 14px !important; /* 内側余白も縮める */
+    margin-top: 8px !important;
+  }
+
+  /* ===== ハンバーガー ===== */
+  .hamburger {
+  display: block;
+  z-index: 300;      /* サイドバーより上に表示 */
+  position: relative; 
+}
+
+.hamburger span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  margin: 4px 0;
+  background-color: #4f6457;
+}
 }
 

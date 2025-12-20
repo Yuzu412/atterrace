@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_11_16_035459) do
+ActiveRecord::Schema[7.2].define(version: 2025_12_19_090220) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -62,10 +62,11 @@ ActiveRecord::Schema[7.2].define(version: 2025_11_16_035459) do
   end
 
   create_table "group_users", force: :cascade do |t|
-    t.integer "group_id"
-    t.integer "user_id"
+    t.integer "group_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["group_id", "user_id"], name: "index_group_users_on_group_id_and_user_id", unique: true
     t.index ["group_id"], name: "index_group_users_on_group_id"
     t.index ["user_id"], name: "index_group_users_on_user_id"
   end

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= content_for(:title) || "Feelplus" %></title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
+
+<body>
+    <div class="app-container">
+    <!-- ヘッダー -->
+    <header>
+    <% if show_header? %>
+        <%= render 'shared/header' %>
+    <% end %>
+    </header>
+
+    <!-- それ以外のコンテンツ -->
+    <div class="content-container">
+      <!-- サイドバー -->
+      <% if show_sidebar? %>
+        <aside class="sidebar">
+          <%= render 'shared/sidebar' %>
+        </aside>
+      <% end %>
+
+      <!-- メインコンテンツ -->
+      <div class="main-area">
+        <!-- グループヘッダー -->
+        <% if show_group_header? %>
+          <div class="group-header">
+            <% if controller_name == "blogs" %>
+              <%= render 'shared/anokoro_header' %>
+            <% else %>
+              <%= render 'shared/koremite_header' %>
+            <% end %>
+          </div>
+        <% end %>
+
+        <!-- main -->
+        <main class="main">
+          <%= yield %>
+        </main>
+      </div>
+    </div>
+  </div> 
+  </body>
+</html>
+
+<script>
+  document.addEventListener("turbo:load", () => {
+  const hamburger = document.querySelector(".hamburger");
+  const sidebar = document.querySelector(".sidebar");
+
+  if (hamburger && sidebar) {
+    hamburger.addEventListener("click", () => {
+      sidebar.classList.toggle("is-open");
+    });
+  }
+});
+</script>
+

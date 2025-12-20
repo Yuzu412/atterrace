@@ -1,26 +1,23 @@
 <div class="group-list">
-<% if @group_joining.blank? %>
-  <p><%= @group_lists_none %></p>
-<% else %>
-  <div class="group-list">
+  <% if @my_groups.present? %>
     <ul class="group-list-table">
-      <% @group_lists.each do |list| %>
-        <% if list.user_ids.include?(current_user.id) %>
-          <li class="group-list-table-each-group">
-            <%= link_to group_path(list) do %>
-              <%= list.name %> (<%= list.user_ids.count %>)
-            <% end %>
-            <div class="group-list-actions">
-              <%= link_to '編集', edit_group_path(list.id) %>
-              <%= link_to '削除', group_path(list.id), method: :delete %>
-              <%= link_to '招待', invitation_link_group_path(list), class: "btn btn-info btn-sm" %>
-            </div>
-          </li>
-        <% end %>
+      <% @my_groups.each do |group| %>
+        <li class="group-list-table-each-group">
+          <%= link_to group.name, group_path(group) %>
+
+          <div class="group-list-actions">
+            <%= link_to '編集', edit_group_path(group) %>
+            <%= link_to '招待', invitation_link_group_path(group),
+                        class: "btn btn-info btn-sm" %>
+          </div>
+        </li>
       <% end %>
     </ul>
-  </div>
-<% end %>
+  <% else %>
+    <p class="dropdown-empty">
+      所属グループがありません
+    </p>
+  <% end %>
 </div>
 
 <div class="group-new">

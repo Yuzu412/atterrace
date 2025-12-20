@@ -1,5 +1,5 @@
 <!-- app/views/shared/_sidebar.html.erb -->
-<div class="sidebar">
+
   <ul>
     <li>
       <div class="dropdown">
@@ -20,9 +20,8 @@
           <div class="dropdown-content">
             <ul>
               <% if @group&.persisted? %>
-                <li><a href="#" class="sticky-button">
-                  <%= link_to "コレミテに写真を追加", new_group_tweet_path(@group), class: "add-photo-button" %></a></li>
-                <li><%= link_to 'アノコロに写真を追加', new_group_blog_path(@group), class: "add-photo-button" %></li>
+                <li><%= link_to "コレミテに写真を追加", new_group_tweet_path(@group), class: "sidebar-add-photo-button" %></li>
+                <li><%= link_to 'アノコロに写真を追加', new_group_blog_path(@group), class: "sidebar-add-photo-button" %></li>
               <% end %>
             </ul>
           </div>
@@ -30,4 +29,3 @@
       </div>
     </li>
   </ul>
-</div>

@@ -1,7 +1,10 @@
 <div class="new-tweet">
   <h3>新規投稿</h3>
 
-<%= form_with(model: [@group, @tweet], local: true, html: { id: 'upload-form' }) do |f| %>
+<%= form_with(model: [@group, @tweet],
+              local: true,
+              data: { turbo: false },
+              html: { id: 'upload-form' }) do |f| %>
 
     <!-- ★ エラーメッセージを表示する場所（ここに追加！） -->
   <% if @tweet.errors.any? %>
@@ -23,7 +26,7 @@
 
   <!-- ★ 画像アップロード（複数対応） -->
   <div class="field">
-    <%= f.file_field :images, multiple: true, direct_upload: true,
+    <%= f.file_field :images, multiple: true, 
           id: 'file-upload-input', style: 'display: none;' %>
 
     <%= f.label :images, "写真を追加",
@@ -33,7 +36,7 @@
   <p id="selected-files" class="file-status"></p>
 </div>
 
-  <%= f.submit "投稿する" %>
+  <%= f.submit "投稿する", data: { turbo: false } %>
 <% end %>
 
 <%= link_to "一覧に戻る", group_path(@group) %>
@@ -42,10 +45,15 @@
   document.addEventListener("turbo:load", () => {
     const input = document.getElementById("file-upload-input");
     const status = document.getElementById("selected-files");
+    const form = document.getElementById("upload-form");
 
-    if (!input || !status) return;
+    if (!input || !status || !form) return;
 
-    input.addEventListener("change", () => {
+    input.addEventListener("change", (e) => {
+      // ★ 勝手に submit されるのを防ぐ
+      e.preventDefault();
+      e.stopPropagation();
+
       if (input.files.length === 0) {
         status.textContent = "";
       } else if (input.files.length === 1) {
@@ -53,6 +61,11 @@
       } else {
         status.textContent = `写真を${input.files.length}枚選択しました`;
       }
+    });
+
+    // 念のため submit を監視（デバッグ用）
+    form.addEventListener("submit", () => {
+      console.log("🚨 submit fired");
     });
   });
 </script>

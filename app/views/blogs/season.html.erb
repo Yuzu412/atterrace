@@ -22,7 +22,7 @@
               <%= image_tag blog.image, class: "w-full h-40 object-cover rounded mb-2" %>
             <% end %>
             <p class="font-medium"><%= blog.title %></p>
-            <p class="text-sm text-gray-500"><%= blog.created_at.strftime("%Y年%m月%d日") %></p>
+            <p class="text-sm text-gray-500"><%= blog.start_time.strftime("%Y年%m月%d日") %></p>
           </div>
         <% end %>
       <% end %>

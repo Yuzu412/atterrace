@@ -29,7 +29,8 @@ class GroupsController < ApplicationController
     def create
         @group = Group.new(group_params)
         if @group.save
-          redirect_to @group, notice: "グループを作成しました！"
+          @group.users << current_user 
+          redirect_to group_path(@group), notice: "グループを作成しました！"
         else
           render :new, status: :unprocessable_entity
         end
@@ -37,14 +38,22 @@ class GroupsController < ApplicationController
 
 
     def show
-        @group = Group.find(params[:id])
-        session[:last_group_id] = @group.id
-        @tweets = @group.tweets.includes(:user).order(created_at: :desc)
-        @group_lists = Group.all
-        @group_joining = GroupUser.where(user_id: current_user.id)
-        @group_lists_none = "グループに参加していません。"
-        @last_group = Group.find_by(id: session[:last_group_id])
-        @members = @group.users
+      @group = Group.find(params[:id])
+
+      # 最後に見たグループを保存
+      session[:last_group_id] = @group.id
+
+      # このグループのツイート
+      @tweets = @group.tweets.includes(:user).order(created_at: :desc)
+
+      # ログインユーザーが所属しているグループ一覧（←超重要）
+      @group_lists = current_user.groups
+
+      # 一覧が空のとき用メッセージ
+      @group_lists_none = "グループに参加していません。"
+
+      # メンバー一覧
+      @members = @group.users
     end
 
 
@@ -65,7 +74,7 @@ class GroupsController < ApplicationController
           end
           redirect_to group_path(@group), notice: 'グループを更新しました。'
         else
-          render :show, status: :unprocessable_entity
+          render :edit, status: :unprocessable_entity
         end
     end
 

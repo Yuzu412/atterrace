@@ -1,6 +1,5 @@
 html, body {
-  margin: 0;
-  padding: 0;
+
   height: 100%;
   
 }
@@ -24,6 +23,8 @@ html, body {
 }
 
 .login-header h1 a {
+  display: flex;
+  align-items: center;
     text-decoration: none;
     color: #444;
     font-weight: bold;
@@ -32,6 +33,7 @@ html, body {
 
 .login-header ul {
     display: flex;
+    align-items: center;
     gap: 20px;
     list-style: none;
     margin: 0;
@@ -39,6 +41,8 @@ html, body {
 }
 
 .login-header a {
+  display: flex;
+    align-items: center;
     text-decoration: none;
     color: #555;
     font-weight: 500;
@@ -49,15 +53,17 @@ html, body {
     color: #d2691e;
 }
 
-/* ▼ ログイン全体（ヘッダー分を避ける） */
 .login-container {
-  min-height: calc(100vh - 80px);      
+  min-height: 100vh;
+  padding: 80px 16px 16px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
   background-color: #FFF8F2;
+  box-sizing: border-box;
 }
 
 /* ▼ カード（タイトル） */
@@ -160,4 +166,93 @@ html, body {
 
 .login-form a:hover {
   text-decoration: underline;
+}
+
+/* =========================
+   ログイン画面 スマホ最終調整（480px以下）
+========================= */
+@media screen and (max-width: 480px) {
+
+  /* ===== 全体フォント ===== */
+  body,
+  .login-container,
+  .login-form {
+    font-family: "Zen Kaku Gothic New",
+                 "Hiragino Kaku Gothic ProN",
+                 "Noto Sans JP",
+                 sans-serif !important;
+  }
+
+  /* ===== ヘッダー ===== */
+  .login-header {
+    height: 48px;
+    padding: 0 16px;
+  }
+
+  .login-header h1 a {
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .login-header a {
+    font-size: 8px;
+    font-weight: 400;
+  }
+
+  .login-header ul {
+    gap: 10px;
+  }
+
+  /* ===== ログイン全体 ===== */
+  .login-container {
+    min-height: calc(100vh - 48px);
+    padding-top: 0;
+  }
+
+  /* ===== タイトル ===== */
+  .login-card h2 {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  /* ===== フォームカード ===== */
+  .login-form {
+    max-width: 300px;
+    padding: 20px 18px;
+    border-radius: 14px;
+  }
+
+  /* ===== ラベル ===== */
+  .login-form h2 {
+    font-size: 10px;
+    margin-bottom: 4px;
+  }
+
+  /* remember me */
+  .login-form h3 {
+    font-size: 9px;
+  }
+
+  /* ===== 入力欄 ===== */
+  .login-form input[type="email"],
+  .login-form input[type="password"] {
+    padding: 8px 10px;
+    font-size: 12px;
+    border-radius: 8px;
+  }
+
+  /* ===== ログインボタン ===== */
+  .login-form input[type="submit"] {
+    margin-top: 10px;
+    padding: 10px 0;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    border-radius: 20px;
+  }
+
+  /* ===== 下のリンク ===== */
+  .login-form a {
+    margin-top: 12px;
+    font-size: 10px;
+  }
 }

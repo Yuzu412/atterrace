@@ -22,7 +22,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-  </head>
 
   <!-- Swiper CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -30,46 +29,9 @@
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-  
-  <div class="app-container">
-    <!-- ヘッダー -->
-    <% if controller_name == "tweets" || controller_name == "blogs" || (controller_name == "groups" && action_name != "new")  %>
-      <header class="normal-header">
-        <%= render 'shared/header' %>
-      </header>
-    <% end %>
-
-    <!-- それ以外のコンテンツ -->
-    <div class="content-container">
-      <!-- サイドバー -->
-      <% if controller_name == "tweets" || controller_name == "blogs" || (controller_name == "groups" && action_name != "new") %>
-        <aside class="sidebar">
-          <%= render 'shared/sidebar' %>
-        </aside>
-      <% end %>
-
-      <!-- メインコンテンツ -->
-      <div class="main-area">
-        <!-- グループヘッダー -->
-        <% if controller_name == "tweets" || (controller_name == "groups" && !["new", "edit"].include?(action_name)) %>
-          <div class="group-header">
-            <%= render 'shared/koremite_header' %>
-          </div>
-        <% end %>
-
-        <% if controller_name == "blogs"  %>
-          <div class="group-header">
-            <%= render 'shared/anokoro_header' %>
-          </div>
-        <% end %>
-
-        <!-- main -->
-        <main class="main">
-          <%= yield %>
-        </main>
-      </div>
-    </div>
-  </div>
+</head>
+<body>
+<%= yield %>
 </body>
 </html>
 
@@ -77,7 +39,7 @@
   document.addEventListener("turbo:load", () => {
     const detailsElements = document.querySelectorAll(".dropdown details");
 
-    // 外をクリックしたら全部閉じる
+    // 外をクリックしたkonら全部閉じる
     document.addEventListener("click", (e) => {
       detailsElements.forEach((details) => {
         if (!details.contains(e.target)) {
@@ -96,4 +58,15 @@
       });
     });
   });
+
+  document.addEventListener("turbo:load", () => {
+  const hamburger = document.querySelector(".hamburger");
+  const sidebar = document.querySelector(".sidebar");
+
+  if (!hamburger || !sidebar) return;
+
+  hamburger.addEventListener("click", () => {
+    sidebar.classList.toggle("is-open");
+  });
+});
 </script>
